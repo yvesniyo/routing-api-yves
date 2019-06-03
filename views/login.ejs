@@ -1,0 +1,79 @@
+<%- include includes/header %>
+	<div class="wraper">
+		<div class="sign">
+			<form method="POST" action="signin" class="form" autocomplete="off">
+				<div class="form-control">
+					<p>Username/Email Address</p>
+					<input type="text" autocomplete="off" autofocus name="email" value="niyobuhungiro.yves@gmail.com" placeholder="Enter username" class="email"   />
+				</div>
+				<div class="form-control">
+					<p>Password</p>
+					<input type="password" name="password" placeholder="Enter password" class="password" value="hello">
+					<p class="result error">Hello World error</p>
+				</div>
+				<div class="form-control">
+					<div class="form_checkContainer">
+						<input type="checkbox" name=""  class="check"> 
+						<label>Remember Me</label>
+					</div>
+					<button class="lgnBtn" type="submit">Log In</button>
+				</div>
+				<div class="" style="width: 100%;margin-top: 80px;">
+					<br />
+						<label>Lost your <a href="#"  style="text-decoration: underline;">password</a>?</label><br /><br />
+						<label>Are you new, <a href="/register"  style="text-decoration: underline;">Register</a>!</label>
+				</div>
+			</form>
+		</div>
+	</div>
+<%- include includes/footer %>
+<script type="text/javascript">
+	function selector(el){
+		return document.querySelector(el)
+	}
+
+	selector(".form").addEventListener("submit",(event)=>{
+		event.preventDefault();
+		var email=selector(".email")
+		var password=selector(".password")
+
+		if(email.value.trim() === ""){
+			email.classList.add("red")
+			return false;
+		}else{
+			email.classList.remove("red")
+		}
+		if(password.value.trim() === ""){
+			password.classList.add("red")
+			return false;
+		}else{
+			password.classList.remove("red")
+		}
+
+		$.ajax({
+			url:'/userAuth/signin',
+			method:'POST',
+			data:{email:email.value.trim(),password:password.value.trim()},
+			success:function(data){
+				$(".result").show();
+				if(data.status == "success"){
+					$(".result").addClass("success")
+					$(".result").html("Success,redirecting...");
+					setTimeout(()=>{
+						document.location.href="/dashboard"
+					},1000)
+				}else{
+					$(".result").removeClass("success")
+					$(".result").html(data.message)
+				}
+			},
+			error:function(error){
+				$(".result").show();
+				$(".result").removeClass("success")
+				$(".result").html("Error Connection!!")
+				console.log(error);
+			}
+		})
+		return false;
+	})
+</script>

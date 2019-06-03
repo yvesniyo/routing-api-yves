@@ -1,0 +1,167 @@
+<%- include includes/header %>
+	<div class="wraper">
+
+		<div class="sign">
+			<form method="POST" action="/register" class="formContainer" autocomplete="off">
+				<div class="form-control">
+					<p>Email Address</p>
+					<input type="text" autocomplete="off" autofocus name="email" placeholder="Enter Email"  class="email" />
+				</div>
+				<div class="form-control">
+					<p>Password</p>
+					<input type="password" name="password" placeholder="Enter Password" class="password">
+				</div>
+
+				<div class="form-control">
+					<p>Confirm Password</p>
+					<input type="password" name="repassword" placeholder="Confirm Password" class="repassword">
+				</div>
+				<div class="form-control">
+					<p>Full Name</p>
+					<input type="text" autocomplete="off" autofocus name="name" placeholder="Enter Full Name" class="name"  />
+				</div>
+				<div class="form-control" style="position: relative;">
+					<p>Phone Number</p>
+					<input type="text" autocomplete="off" autofocus name="number" placeholder="Enter Phone Number" class="phone"  />
+					<div class="q"></div>
+				</div>
+				<div class="form-control">
+					<p class="result error">Hello World error</p>
+					<button class="lgnBtn" type="submit">Register</button>
+				</div>
+				<div class="" style="width: 100%;margin-top: 50px;">
+						<label>Am not new <a href="/login" style="text-decoration: underline;">login</a>?</label>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+<%- include includes/footer %>
+<script type="text/javascript">
+	function selector(el){
+		return document.querySelector(el);
+	}
+
+	let email=selector(".email")
+	let name=selector(".name")
+	let password=selector(".password")
+	let repassword=selector(".repassword")
+	let phone=selector(".phone")
+	phone.value="+250       ";
+	function checkNum(data){
+		var d=data;
+		if(d=="0" || d=="1" || d=="2" || d=="3" || d)
+		for(var i=0;i<10;i++){
+			if(data == i){
+				return true;
+			}
+		}
+		return false;
+	}
+	phone.addEventListener("input",()=>{
+		let lastDigit=phone.value
+		if(phone.value.length >11 ){
+			if(! checkNum(lastDigit[lastDigit.length-1].trim()) ){
+				phone.classList.add("red")
+				phone.value=phone.value.substring(0,phone.value.length-1)
+			}else{
+				phone.classList.remove("red")
+			}
+		}else{
+			phone.value="+250       ";
+		}
+		if(phone.value.length > 20){
+			phone.value=phone.value.substring(0,phone.value.length-1)
+		}
+		
+	})
+
+
+	
+	selector(".formContainer")
+	.addEventListener("submit",(event)=>{
+		event.preventDefault();
+
+		if(name.value.trim() === ""){
+				name.classList.add("red")
+		}else{
+			name.classList.remove("red")
+		}
+		if(email.value.trim() === ""){
+			email.classList.add("red")
+		}else{
+			email.classList.remove("red")
+		}
+		if(phone.value.trim() === ""){
+			phone.classList.add("red")
+		}else{
+			phone.classList.remove("red")
+		}
+		if(password.value.trim() === ""){
+			password.classList.add("red")
+		}else{
+			password.classList.remove("red")
+		}
+		if(repassword.value.trim() !== password.value.trim() || repassword.value.trim().length <=2){
+			password.classList.add("red")
+			repassword.classList.add("red")
+		}else{
+			password.classList.remove("red")
+			repassword.classList.remove("red")
+		}
+		if(phone.value.length < 20){
+			phone.classList.add("red")
+		}else{
+			phone.classList.remove("red")
+		}
+		if(phone.value.length < 20){
+			phone.classList.add("red")
+			return false;
+		}else{
+			phone.classList.remove("red")
+		}
+		if(repassword.value.trim()==="" || email.value.trim()==="" || name.value.trim()==="" || phone.value.trim()===""){
+			
+			return false
+
+		}
+		if(repassword.value.trim() !== password.value.trim()){
+			console.log("password not matching")
+			return false;
+		}
+		var number=phone.value.trim().substring(0,4)+phone.value.trim().substring(11,20)
+
+		$.ajax({
+			url : '/userAuth/register',
+			data : {email:email.value.trim(),password:password.value.trim(),name:name.value.trim(),number:number},
+			method:"POST",
+			success:function(data){
+				$(".result").show();
+				if(data.status == "success"){
+					$(".result").addClass("success")
+					$(".result").html("Success,redirecting...");
+					setTimeout(()=>{
+						document.location.href="/dashboard"
+					},1000)
+				}else{
+					$(".result").removeClass("success")
+					$(".result").html(data.message)
+				}
+				localStorage.removeItem("user")
+			},
+			error:function(error){
+				$(".result").removeClass("success")
+				$(".result").html("Error Connection!!")
+				console.log(error)
+			}
+		})
+		return false;
+		
+	})
+
+	if(localStorage.getItem("user") !== null){
+		var user=JSON.parse(localStorage.getItem("user"))
+		name.value=user.name
+		email.value=user.email
+	}
+</script>

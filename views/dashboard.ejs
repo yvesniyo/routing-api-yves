@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ydesign Grid Admin</title>
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        .input {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            border-bottom: 1px solid #1bbae1;
+            transition: all 1s;
+        }
+
+        .input:focus {
+            border-bottom: 1px solid #394263;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .sidenav__list-item a {
+            color: white;
+            display: block;
+        }
+
+        .header__avatar {
+            position: relative;
+        }
+
+        .drop {
+            min-height: 60px;
+            width: 170px;
+            border: 1px solid transparent;
+            position: absolute;
+            top: 42px;
+            right: -10px;
+            background-color: white;
+            z-index: 10;
+            -webkit-box-shadow: 0px 15px 18px 6px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: 0px 15px 18px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 15px 18px 6px rgba(0, 0, 0, 0.8);
+            display: none;
+        }
+
+        .drop:after {
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background-color: inherit;
+            top: -11px;
+            right: 5px;
+            transform: rotate(45deg);
+            border-top: 1px solid transparent;
+            border-left: 1px solid transparent;
+            z-index: 10;
+        }
+
+        .drop .hider {
+            height: 100%;
+            width: 100%;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 20;
+        }
+
+        .drop ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+        .drop ul li {
+            font-size: 12px;
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            color: #394263;
+        }
+
+        .drop ul li:hover {
+            opacity: 0.6;
+        }
+
+        .drop ul li i {
+            color: #394263;
+            float: right;
+            margin-right: 10px;
+        }
+
+        .drop ul li a {
+            display: block;
+        }
+
+        .alert {
+            margin-top: 10px;
+        }
+
+        .remove {
+            display: none;
+        }
+
+        #wrapper {
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 22px 35px -16px rgba(0, 0, 0, 0.1);
+            width: auto;
+        }
+
+        #wrapper div {
+            display: inline-block;
+            color: white !important;
+        }
+        .sidenav__list-item:hover a{
+        	color: #269ffb;
+        }
+        .sidenav__list-item:hover a i{
+        	color: #269ffb;
+        }
+        .sidenav__list-item a{
+        	color: #ddd;
+        	font-size: 12px;
+        }
+        .sidenav__list-item a i{
+        	float: left;
+        	margin-right: 10px;
+        	color:#e67e22;
+        	font-size: 16px;
+
+        }
+    </style>
+</head>
+
+<body onload="arrange()">
+
+    <div class="grid-container">
+
+        <header class="header">
+            <div class="menu-icon">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="header__search">
+                <input type="text" class="input" name="" placeholder="Search....">
+            </div>
+            <div class="header__avatar">
+                <img src="assets/images/person.jpg" />
+                <i class="fa fa-angle-down profileDrop"></i>
+                <div class="drop" onmouseleave="closeDrop()">
+                    <ul>
+                        <li><a href="dashboard/profile">Profile <i class="fa fa-user"></i> </a></li>
+                        <li><a href="/logout">Logout <i class="fa fa-sign-out"></i> </a></li>
+                        <li><a href="/dashboard/settings">Settings <i class="fa fa-gear"></i> </a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <aside class="sidenav">
+            <div class="sidenav__close-icon">
+                <i class="fa fa-times"></i>
+            </div>
+            <div class="sidenav__sitename">
+                <div class="sidenav__sitename_name">
+                    <i class="fa fa-heart"></i>
+                    <label>Y</label>Design
+                </div>
+            </div>
+            <div class="sidenav__siteuser">
+                <div class="sidenav__siteuser__image">
+                    <img src="assets/images/person.jpg" />
+                </div>
+                <div class="sidenav__siteuser__username">
+                    <label>Niyobuhungiro  Yves</label>
+                </div>
+            </div>
+
+            <ul class="sidenav__list">
+                <p></p>
+                <li class="sidenav__list-item"><a href="dashboard">Dashboard <i class="fa fa-dashboard"></i> </a></li>
+                <li class="sidenav__list-item"><a href="dashboard/requests">Requests <i class="fa fa-ticket"></i> </a></li>
+                <li class="sidenav__list-item"><a href="dashboard/money">Money <i class="fa fa-money"></i> </a></li>
+                <li class="sidenav__list-item"><a href="dashboard/token">Token <i class="fa fa-key"></i> </a></li>
+            </ul>
+
+        </aside>
+        <main class="main">
+            <div class="main-header_heading">
+                <div class="main-header_heading_blur">
+                    <div class="main_header_heading_blur_task">
+                        <h3>Welcome,
+                            <%= data.name ;%>
+                        </h3>
+                        <p>How are you in this days?</p>
+                    </div>
+                    <div class="main_header_heading_blur_task">
+                        <label>100%</label>
+                        <div>
+                            <i class="fa fa-save"></i> Fred
+                        </div>
+                    </div>
+                    <div class="main_header_heading_blur_task">
+                        <label>200%</label>
+                        <div>
+                            <i class="fa fa-save"></i> Eddy
+                        </div>
+                    </div>
+                    <div class="main_header_heading_blur_task">
+                        <label>0%</label>
+                        <div>
+                            <i class="fa fa-save"></i> Yves
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-header_update">
+                <STRONG style="color: #e67e22"><i class="fa fa-warning"></i> System Alerts</STRONG>
+
+                <div class="alerts">
+                    <% if (!data.confirmed) { %>
+                        <div class="alert some">
+                            <p>Please you have to confirm your email,because you won't be accessing all the actities of this system</p>
+
+                        </div>
+                        <% }  %>
+                            <div class="alert some" style="background-color: #cce5ff;">
+                                <p style="color: #6f8bff">Use this token in your requests :
+                                    <%= data.token %>
+                                </p>
+                            </div>
+
+                </div>
+            </div>
+            <div class="main-overview">
+                <div class="overviewcard">
+                    <div class="overviewcard__icon fa fa-ticket"></div>
+                    <div class="overviewcard__info">
+                        <h6>Requests</h6>
+                        <p>
+                            <% 
+							let amount=data.amount;
+							let req=amount/30;
+							%>
+                                <%= parseInt(req) %>
+                        </p>
+                    </div>
+                </div>
+                <div class="overviewcard">
+                    <div class="overviewcard__icon fa fa-money"></div>
+                    <div class="overviewcard__info">
+                        <h6>Amount Left</h6>
+                        <p>
+                            <%= data.amount; %> Rwf</p>
+                    </div>
+                </div>
+                <div class="overviewcard">
+                    <div class="overviewcard__icon fa fa-home"></div>
+                    <div class="overviewcard__info">
+                        <h6>Last Payment</h6>
+                        <p>
+                            <%= data.amount-data.lastPayment %> Rwf
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="main-cards">
+
+                <div id="wrapper" class="card">
+                    <div style="height: 100px;">
+                        <div class="chart1" style="height: 20px;width: 20px;background-color: #269ffb">
+
+                        </div>
+                        <p style="color:#269ffb;display: inline;margin-top: -10px;cursor: pointer;"> Money</p> <br />
+                        <div class="chart1" style="height: 20px;width: 20px;background-color: #6d838d">
+
+                        </div>
+                        <p style="color:#6d838d;display: inline;margin-top: -10px;cursor: pointer;"> Requests</p> <br />
+                        <div class="chart1" style="height: 20px;width: 20px;background-color: #00e396">
+
+                        </div>
+                        <p style="color:#00e396;display: inline;margin-top: -10px;cursor: pointer;"> Payments</p> <br />
+                    </div>
+                    <div id="chart-line">
+                        <apexchart type=line height=250 :options="chartOptionsLine1" :series="series1" />
+                    </div>
+
+                    <div id="chart-line2">
+                        <apexchart type=line height=160 :options="chartOptionsLine2" :series="series2" />
+                    </div>
+
+                    <div id="chart-area">
+                        <apexchart type=area height=160 :options="chartOptionsArea" :series="series3" />
+                    </div>
+                </div>
+                <div class="card" style="display: none;">Content Up Here
+                </div>
+                <div class="card" style="display: none;">Content Up Here
+                </div>
+            </div>
+
+        </main>
+        <footer class="footer">
+            <div class="footer__copyright">&copy; 2019</div>
+            <div class="footer__signature">Made by niyobuhungiro.yves@gmail.com</div>
+        </footer>
+        <div class="login" style="position: fixed;bottom: 10px;right: 10px;border-radius: 0px;height: auto;width: auto;background: #fff3cd;border:1px solid lightgray;padding-left: 10px;padding-right: 10px;cursor: pointer;display: none;transition: all 1s;">
+            <p style="font-size: 14px;color: red;">Please you have to login again.</p>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript">
+        document.querySelector(".profileDrop").addEventListener("click", () => {
+            document.querySelector(".drop").style.display = "block";
+        })
+
+        function closeDrop() {
+            document.querySelector(".drop").style.display = "none";
+        }
+        var alerts = document.querySelectorAll(".alert")
+        for (var i = 0; i < alerts.length; i++) {
+            alerts[i].addEventListener("click", (el) => {
+                console.log(el.target.parentElement)
+                el.target.parentElement.classList.add("remove");
+                el.target.parentElement.classList.remove("some")
+                if (document.querySelectorAll(".alerts .some").length == 0) {
+                    document.querySelector(".main-header_update").style.display = "none";
+                }
+            })
+
+        }
+
+        function arrange() {
+            if (!document.querySelector(".alerts .some")) {
+                document.querySelector(".main-header_update").style.display = "none";
+            }
+        }
+
+        setInterval(() => {
+            if (localStorage.getItem("lastRefresh") == null) {
+                localStorage.setItem("lastRefresh", new Date().getTime());
+            }
+            var lastTimeLefresh = localStorage.getItem("lastRefresh");
+            var now = new Date().getTime();
+            if ((now - lastTimeLefresh) >= 1000 * 10) {
+                $.ajax({
+                    url: '/refresh',
+                    method: "GET",
+                    success: function(data) {
+                        console.log(data)
+                        localStorage.setItem("lastRefresh", new Date().getTime());
+                        if (data.status == "error") {
+                            $(".login").css("display", "block");
+                        } else {
+                            $(".login").css("display", "none");
+                        }
+                    }
+                })
+
+            }
+        }, 100)
+        $(".login").click(function() {
+            document.location.href = "/logout";
+        })
+    </script>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-apexcharts"></script> -->
+    <script>
+        function generateDayWiseTimeSeries(baseval, count, yrange) {
+            var i = 0;
+            var series = [];
+            while (i < count) {
+                var x = baseval;
+                var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+                series.push([x, y]);
+                baseval += 86400000;
+                i++;
+            }
+            return series;
+        }
+
+        // The global window.Apex variable below can be used to set common options for all charts on the page
+        Apex = {
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight'
+            },
+            toolbar: {
+                tools: {
+                    selection: false
+                }
+            },
+            markers: {
+                size: 6,
+                hover: {
+                    size: 10
+                }
+            },
+            tooltip: {
+                followCursor: false,
+                theme: 'dark',
+                x: {
+                    show: false
+                },
+                marker: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function() {
+                            return ''
+                        }
+                    }
+                }
+            },
+            grid: {
+                clipMarkers: false
+            },
+            yaxis: {
+                tickAmount: 2
+            },
+            xaxis: {
+                type: 'datetime'
+            },
+        }
+
+        new Vue({
+            el: '#wrapper',
+            components: {
+                apexchart: VueApexCharts,
+            },
+            data: {
+                series1: [{
+                    data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+                        min: 10,
+                        max: 60
+                    })
+                }],
+                series2: [{
+                    data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+                        min: 10,
+                        max: 30
+                    })
+                }],
+                series3: [{
+                    data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
+                        min: 10,
+                        max: 90
+                    })
+                }],
+                chartOptionsLine1: {
+                    chart: {
+                        id: 'fb',
+                        group: 'social',
+                    },
+                    colors: ['#008FFB'],
+                },
+                chartOptionsLine2: {
+                    chart: {
+                        id: 'tw',
+                        group: 'social',
+                    },
+                    colors: ['#546E7A'],
+
+                },
+                chartOptionsArea: {
+                    chart: {
+                        id: 'yt',
+                        group: 'social',
+                    },
+                    colors: ['#00E396'],
+
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

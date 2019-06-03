@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title; %></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="assets/css/userSide.css">
+	<style type="text/css">
+		.nav_ul li{
+			position: relative;
+		}
+		.downList{
+			position: absolute;
+			right: 0;
+			background-color: white;
+			width: 500px;
+			top: 33px;
+			height: 200px;
+			box-shadow: 0px 11px 18px 0px rgba(255,255,255,0.07);
+			padding: 10px 20px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<img src="assets/images/logo.png" class="logo">
+		<div class="nav">
+			<ul class="nav_ul">
+				<li class="home"><a href="/">Home</a></li>
+				<li class="products"><a href="/products">Products</a></li>
+				<li class="pricing"><a href="/pricing">Pricing</a></li>
+				<li class="documentation"><a href="/documentation">Documentation</a>
+					<div class="downList">
+						<p>Hello wordl</p>
+						<p>Hello wordl</p>
+						<p>Hello wordl</p>
+						<p>Hello wordl</p>
+						<p>Hello wordl</p>
+					</div>
+				</li>
+				<li class="about"><a href="/about">About</a></li>
+				<% if (login) { %>
+					<li class="account"><a href="/dashboard">MyAccount</a></li>
+				<% } else { %>
+					<li class="login"><a href="/login">Login</a></li>
+				<% } %>
+				
+				
+				
+				
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+	var path=document.location.pathname;
+	path=path.replace("\"","");
+	path=path.replace("/","");
+
+	if(path=="register"){
+		document.querySelector(".nav_ul li.login a").href="register";
+		document.querySelector(".nav_ul li.login a").innerHTML="Register"
+		document.querySelector(".nav_ul li.login").classList.add("active")
+	}
+	if(path==""){
+		document.querySelector(".nav_ul .home").classList.add("active");
+	}else if(document.querySelector(".nav_ul li."+path)){
+		document.querySelector(".nav_ul li."+path).classList.add("active");
+	}
+	
+
+	console.log(path)
+	</script>

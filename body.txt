@@ -1,0 +1,1904 @@
+Delivered-To: niyobuhungiro.yves@gmail.com
+Received: by 2002:a1f:36d5:0:0:0:0:0 with SMTP id d204csp1722630vka;
+        Sat, 1 Jun 2019 02:10:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwZP0Uo50JOPbBw3shsSummEseR5Z7zaFIRDIP4nj0xXqZNK902rHqx03M2qO0eL8Ic/Zcq
+X-Received: by 2002:aa7:9a95:: with SMTP id w21mr15515730pfi.248.1559380221135;
+        Sat, 01 Jun 2019 02:10:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559380221; cv=none;
+        d=google.com; s=arc-20160816;
+        b=fOK82NXnN6YjHPwDIxuWJkFPa/vfBT11dT3MKT8hHz2H2jPbp9DrnKF6AC7v88wZz6
+         hxgVAphey+NBcPFWdOWupDNO0k7guwnZghBvEO1YHYt6YiyNr3oWE6AhYeg5soaaAims
+         wWKf8H8Seu/59pfIyfMSl4ab5FahGOUImpcVhqxHDBiM9/4qNrZnJyyYejKHu9g2aQX2
+         7RbmqiOHLOtnSDqqHPyCh2KIMgsKXQpZqhy5NjhRELpOnfJepiHfIxIuuyhky2skLNRg
+         nYRJWku+t41Yn+l5FVeVIQSYHnhCJC8Fw5oPqc2EvZyBsV4wSKXZ09oxwib+esvpM/iJ
+         Xx9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:date:message-id:content-transfer-encoding:mime-version
+         :subject:to:from:dkim-signature:dkim-signature;
+        bh=YgAZrVT4xhsZUt6RbE9ORXEp15jLoUiMtvT6/RWTGxs=;
+        b=azwNddsfFqc8wMPpKBLdUtOLYmsr/myyCeGauT0XPcj4oHIbmTXt99gBBIIt1R0+j5
+         XP6P+yveTM5kJAcUBr3NMaT8+Ymy9FMsBSZ0iPfab8t+8MyDaKRb665p/nPqRzaZn2Vc
+         I0r0/yyt+MZWlZVFtrfWBEgbFK2pTBNl4bOu727XHoLY5T30b3vK3N7PWv9HUYoIa+Or
+         Pr1vTOqDoCa0H9n9/T5buEEaJuWFyq4nEJyi+CpzwB42IfzGK86IQ2fVGgu38VsurShW
+         4DP7ZBPc1/UfE3DXWB2aLr5N29ij727ox3LQamWyJPPN+9pZbLci26ItLS9v+At2JA/e
+         ZbxA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@myfxbook.com header.s=izgjf3lmww4cgcypwsfj6h6bj7vp4d6n header.b=dNk2pktC;
+       dkim=pass header.i=@amazonses.com header.s=gdwg2y3kokkkj5a55z2ilkup5wp5hhxx header.b=bLsVCxQK;
+       spf=pass (google.com: domain of 0101016b124dd9a8-f629ca8f-3fec-4634-8ec9-ccb4cf5b9806-000000@us-west-2.amazonses.com designates 54.240.27.85 as permitted sender) smtp.mailfrom=0101016b124dd9a8-f629ca8f-3fec-4634-8ec9-ccb4cf5b9806-000000@us-west-2.amazonses.com
+Return-Path: <0101016b124dd9a8-f629ca8f-3fec-4634-8ec9-ccb4cf5b9806-000000@us-west-2.amazonses.com>
+Received: from a27-85.smtp-out.us-west-2.amazonses.com (a27-85.smtp-out.us-west-2.amazonses.com. [54.240.27.85])
+        by mx.google.com with ESMTPS id k8si8753409pgi.123.2019.06.01.02.10.20
+        for <niyobuhungiro.yves@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 01 Jun 2019 02:10:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0101016b124dd9a8-f629ca8f-3fec-4634-8ec9-ccb4cf5b9806-000000@us-west-2.amazonses.com designates 54.240.27.85 as permitted sender) client-ip=54.240.27.85;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@myfxbook.com header.s=izgjf3lmww4cgcypwsfj6h6bj7vp4d6n header.b=dNk2pktC;
+       dkim=pass header.i=@amazonses.com header.s=gdwg2y3kokkkj5a55z2ilkup5wp5hhxx header.b=bLsVCxQK;
+       spf=pass (google.com: domain of 0101016b124dd9a8-f629ca8f-3fec-4634-8ec9-ccb4cf5b9806-000000@us-west-2.amazonses.com designates 54.240.27.85 as permitted sender) smtp.mailfrom=0101016b124dd9a8-f629ca8f-3fec-4634-8ec9-ccb4cf5b9806-000000@us-west-2.amazonses.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=izgjf3lmww4cgcypwsfj6h6bj7vp4d6n; d=myfxbook.com; t=1559380220;
+	h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Date;
+	bh=fULdkJ2VZf92kcJ/z26+2mw6PFHpUxnB2RCzdkVNOQM=;
+	b=dNk2pktC3OMCns5e8yd84Hf+GNFqUdIwoJdenMO9ORQ7QjORuD2T9eBv6cdZMt7u
+	wm7Nyn6gKfTaAHOFIb7cQmJoUhhUNf1gV7McDE88/S8y0IQLRNdrgvgtYbnLYA1wUZx
+	zRiV790hKKWwokrzM9nVfxDWLyCUtXtPv5VHX1xQ=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=gdwg2y3kokkkj5a55z2ilkup5wp5hhxx; d=amazonses.com; t=1559380220;
+	h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Date:Feedback-ID;
+	bh=fULdkJ2VZf92kcJ/z26+2mw6PFHpUxnB2RCzdkVNOQM=;
+	b=bLsVCxQKD0zgHcIxGfiDrJtPeEbU8QXC7BAMQcVIezRqIxJaRUb0NtS7Wk7aojL4
+	HEkkwLXGCRwKkAjXvvEIESgtrsv3/NzNQ5CPQUGsLcWzpbC4ajbe7dmRx/5KxAJkFo8
+	AiVbEvMznfQXxwsYrv4WDCRiNgxCQXtSzm+mMvnY=
+From: Myfxbook <noreply@myfxbook.com>
+To: niyobuhungiro.yves@gmail.com
+Subject: Myfxbook Weekly Economic Calendar For Jun 2, 2019-Jun 8, 2019
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Message-ID: <0101016b124dd9a8-f629ca8f-3fec-4634-8ec9-ccb4cf5b9806-000000@us-west-2.amazonses.com>
+Date: Sat, 1 Jun 2019 09:10:20 +0000
+X-SES-Outgoing: 2019.06.01-54.240.27.85
+Feedback-ID: 1.us-west-2.sqbN9Zr49s1ohDj8mrI8EH3e86RdUmf6ojyWLqNanPI=:AmazonSES
+
+ =20
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xml:lang=3D"en" lang=3D"en">
+<head>
+    <style type=3D"text/css">
+        body {
+            font-family: verdana, sans-serif;
+            font-size: 12px;
+            color: #575454;
+        }
+
+
+        .lowBG {
+            background: #00a800;
+        }
+
+        .mediumBG {
+            background: #f1ab41;
+        }
+
+        .highBG {
+            background: #cd0303;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<p>Dear             niyoyves
+        ,</p>
+<p>Below you will find a list of economic events for the week ahead - econo=
+mic events can have a direct effect on volatility which may affect your tra=
+ding.</p>
+<p><b>Download our free APP to always stay up to date with the markets on t=
+he go!</b><br>
+    <a target=3D"_blank" href=3D"https://play.google.com/store/apps/details=
+?id=3Dcom.myfxbook.forex&amp;hl=3Den"> <img alt=3D"Download Myfxbook Androi=
+d App" src=3D"https://static.mfbcdn.net/images/myfxbook-android-app.png" st=
+yle=3D"width:96px;height:auto;"></a>
+    <a target=3D"_blank" href=3D"https://itunes.apple.com/il/app/forex-cale=
+ndar-market-news/id985947299?mt=3D8&amp;hl=3Den"> <img alt=3D"Download Myfx=
+book iOS App" src=3D"https://static.mfbcdn.net/images/myfxbook_appstore_but=
+ton.png" style=3D"width:96px;height:auto;" ></a></p>
+<p>For the  the full real-time Economic Calendar please go here: <a href=3D=
+"http://www.myfxbook.com/forex-economic-calendar" style=3D"text-decoration:=
+underline">http://www.myfxbook.com/forex-economic-calendar</a></p>
+<br/>
+
+<div style=3D"padding:10px; border:1px solid #dedede; background: #F1F1F1; =
+display:table;margin:0 auto">
+<div style=3D"font-size:10px;text-align:center"><b>This email is sponsored =
+by:</b></div>
+<div style=3D"padding:10px"><a href=3D"https://www.myfxbook.com/eac.html?co=
+de=3D309&redirect=3D8&token=3Da93b9b6741687cba75558ea992c40816" target=3D"_=
+blank"><img src=3D"http://static.myfxbook.com/images/autotrade/autotrade.gi=
+f"/></a>
+</div>
+</div>
+<br/>
+<img src=3D"https://www.myfxbook.com/eai.png?code=3D309&r=3D0.7332900491501=
+776" alt=3D"" style=3D"display:none;"/>
+
+<div style=3D"text-align:center;font-size:11px;">(Timezone: GMT 0.0, DST of=
+f)</div>
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"1" id=3D"calendar" ali=
+gn=3D"center" style=3D"border-collapse:collapse;border:1px solid #dedede;">
+<tr style=3D"font-size:11px;">
+    <th style=3D"padding:4px 5px;border-right:1px solid #dedede;border-bott=
+om:1px solid #dedede;">Date</th>
+    <th style=3D"padding:4px 5px;border-right:1px solid #dedede;border-bott=
+om:1px solid #dedede;">Country</th>
+    <th style=3D"padding:4px 5px;border-right:1px solid #dedede;border-bott=
+om:1px solid #dedede;">Event</th>
+    <th style=3D"padding:4px 5px;border-right:1px solid #dedede;border-bott=
+om:1px solid #dedede;">Impact</th>
+    <th style=3D"padding:4px 5px;border-right:1px solid #dedede;border-bott=
+om:1px solid #dedede;">Previous</th>
+    <th style=3D"padding:4px 5px;border-right:1px solid #dedede;border-bott=
+om:1px solid #dedede;">Consensus</th>
+
+
+
+
+
+            <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Sunday Jun 02, 00:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Italy</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Republic =
+Day</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold">            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Sunday Jun 02, 22:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Australia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;AiG Perfo=
+rmance of Mfg Index</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        54.8               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Sunday Jun 02, 23:50</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Japan</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Capital S=
+pending</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        5.7%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        11.6%              =
+                                       </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Sunday Jun 02, 23:50</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Japan</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;JP Foreig=
+n Reserves</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        $1293.5            =
+                                         </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 00:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Colombia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Ascension=
+ Day</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold">            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 00:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Ireland</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;June Holi=
+day </td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold">            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 00:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">New Zealand</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Queen's B=
+irthday</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold">            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 00:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Japan</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Nikkei Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        49.6               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        49.6               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 00:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">South Korea</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Nikkei Ma=
+rkit Manufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.2               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        49.5               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 01:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Australia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Company G=
+ross Operating Profits (QoQ)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.8%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        3.0%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 01:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Australia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;ANZ Job A=
+dvertisements</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -0.1%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 01:45</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">China</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Caixin Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.2               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.0               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 06:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Russia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;HSBC Manu=
+facturing PMI=09</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        51.8               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 06:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Turkey</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Exports</=
+td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        $14.49             =
+                                        </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 06:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Australia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;RBA Commo=
+dity Index SDR (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        14.4%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        22.3%              =
+                                       </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 06:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Switzerland</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Price Index (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.2%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.2%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 06:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Switzerland</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Price Index (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.7%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.7%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 06:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Sweden</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Purchasin=
+g Managers Index Manufacturing (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.9               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Hungary</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Producer =
+Price Index (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        2.7%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Poland</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Purchasin=
+g Manager Index</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        49.0               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Turkey</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Producer =
+Price Index (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        30.12%             =
+                                        </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Turkey</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Producer =
+Price Index (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        2.98%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Turkey</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Price Index (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        19.5%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        19.1%              =
+                                       </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Turkey</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Price Index (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.69%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.3%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:15</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Spain</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        51.8               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        51.9               =
+                                      </td>
+
+        </tr>
+                                    <tr>
+                    <td colspan=3D"6" style=3D"background: #F1F1F1; text-al=
+ign: center;border: 1px solid #dedede ">
+
+                        <div style=3D"padding:10px"><a href=3D"https://www.=
+myfxbook.com/eac.html?code=3D309&redirect=3D8&token=3Da93b9b6741687cba75558=
+ea992c40816" target=3D"_blank"><img src=3D"http://static.myfxbook.com/image=
+s/autotrade/autotrade.gif"/></a>
+</div>
+
+                        <img src=3D"https://www.myfxbook.com/eai.png?code=
+=3D309&r=3D0.8364347041992192" alt=3D"" style=3D"display:none;"/>
+                    </td>
+                </tr>
+                                <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Austria</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Unemploym=
+ent Rate</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        7.3%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Switzerland</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;SVME - Pu=
+rchasing Managers' Index</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        48.5               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Czech Republic</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit PM=
+I</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        46.6               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        46.5               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Sweden</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Retail Sa=
+les (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.9%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Sweden</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Retail Sa=
+les (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.5%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.4%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Austria</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Unemploym=
+ent</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        296.3              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:45</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Italy</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        49.1               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        49.8               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:50</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">France</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.6               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.6               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 07:55</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Germany</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        44.3               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        44.3               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 08:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">European Monetary Union</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        47.7               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        47.7               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 08:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Greece</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        56.6               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 08:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Hong Kong SAR</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Retail Sa=
+les</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -10.1%             =
+                                        </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 08:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">United Kingdom</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        53.1               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        52.4               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 12:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">South Africa</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Total New=
+ Vehicle Sales</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        36.794             =
+                                        </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 13:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Brazil</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;HSBC PMI =
+Manufacturing</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        51.5               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 13:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Canada</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        49.7               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        49.8               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 13:45</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">United States</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit Ma=
+nufacturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.6               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.6               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 14:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">United States</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Construct=
+ion Spending (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -0.9%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.5%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 14:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">United States</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;ISM Price=
+s Paid</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.0               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        55.1               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 14:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">United States</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;ISM Manuf=
+acturing PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        52.8               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        53.3               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 15:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">United States</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;6-Month B=
+ill Auction</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        2.32%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 15:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">United States</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;3-Month B=
+ill Auction</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        2.31%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 19:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Argentina</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Industria=
+l Output n.s.a (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -8.5%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 19:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Brazil</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Trade Bal=
+ance</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        6.061              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 21:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">United States</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Total Veh=
+icle Sales</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        16.4               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                    <tr>
+                    <td colspan=3D"6" style=3D"background: #F1F1F1; text-al=
+ign: center;border: 1px solid #dedede ">
+
+                        <div style=3D"padding:10px"><a href=3D"https://www.=
+myfxbook.com/eac.html?code=3D309&redirect=3D8&token=3Da93b9b6741687cba75558=
+ea992c40816" target=3D"_blank"><img src=3D"http://static.myfxbook.com/image=
+s/autotrade/autotrade.gif"/></a>
+</div>
+
+                        <img src=3D"https://www.myfxbook.com/eai.png?code=
+=3D309&r=3D0.8276452591103918" alt=3D"" style=3D"display:none;"/>
+                    </td>
+                </tr>
+                                <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 22:45</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">New Zealand</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Terms of =
+Trade Index</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -3.0%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -1.0%              =
+                                       </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 23:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">South Korea</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Gross Dom=
+estic Product Growth (QoQ) </td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -0.3%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -0.3%              =
+                                       </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 23:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">South Korea</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Gross Dom=
+estic Product Growth (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.8%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.8%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 23:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">South Korea</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Price Index Growth (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.4%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.3%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 23:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">South Korea</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Price Index Growth (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.6%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.8%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 23:01</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Ireland</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Confidence</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        87.7               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 23:01</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">United Kingdom</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;BRC Like-=
+For-Like Retail Sales (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        3.7%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.2%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Monday Jun 03, 23:50</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Japan</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Monetary =
+Base (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        3.1%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        2.0%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 00:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Turkey</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Ramazan F=
+east</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold">            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 00:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Australia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;TD Securi=
+ties Inflation (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.2%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 00:01</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Ireland</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Purchasin=
+g Manager Index Manufacturing</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        52.5               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 01:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Australia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Current A=
+ccount Balance</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -7.2               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -9.2               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 01:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Australia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Retail Sa=
+les s.a. (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.3%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.2%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 04:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Australia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;RBA Inter=
+est Rate Decision</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.5%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.25%              =
+                                       </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 04:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Australia</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;RBA Rate =
+Statement</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 06:45</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">France</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Budget</t=
+d>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        =E2=82=AC-40.7     =
+                                                </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        =E2=82=AC-62.2     =
+                                                </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 07:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Spain</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Unemploym=
+ent Change</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -92.0              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 07:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Sweden</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Current A=
+ccount (QoQ)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        39.6               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 07:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Sweden</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Industria=
+l Production (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -2.2%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 07:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Sweden</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Industria=
+l Production (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -1.3%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 07:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Sweden</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;New Order=
+s Manufacturing (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        -8.1%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 08:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Brazil</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Fipe's IP=
+C Inflation</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.29%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 08:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Poland</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Price Index (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        2.2%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.8%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 08:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Poland</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Price Index (MoM)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.1%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        0.3%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 08:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Italy</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Unemploym=
+ent</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        10.2%              =
+                                       </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        10.3%              =
+                                       </td>
+
+        </tr>
+                                    <tr>
+                    <td colspan=3D"6" style=3D"background: #F1F1F1; text-al=
+ign: center;border: 1px solid #dedede ">
+
+                        <div style=3D"padding:10px"><a href=3D"https://www.=
+myfxbook.com/eac.html?code=3D309&redirect=3D8&token=3Da93b9b6741687cba75558=
+ea992c40816" target=3D"_blank"><img src=3D"http://static.myfxbook.com/image=
+s/autotrade/autotrade.gif"/></a>
+</div>
+
+                        <img src=3D"https://www.myfxbook.com/eai.png?code=
+=3D309&r=3D0.26647448635178395" alt=3D"" style=3D"display:none;"/>
+                    </td>
+                </tr>
+                                <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 08:30</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">United Kingdom</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Markit Co=
+nstruction PMI</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.5               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        50.5               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 09:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">Greece</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Gross Dom=
+estic Product s.a (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:green">Low</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.6%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                            </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 09:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">European Monetary Union</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Unemploym=
+ent Rate</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:orange">Medium</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        7.7%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        7.7%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 09:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">European Monetary Union</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Price Index - Core (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.3%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.0%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"padding:4px 5px;border-right:1px sol=
+id #dedede;border-bottom:1px solid #dedede;">Tuesday Jun 04, 09:00</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;">European Monetary Union</td>
+            <td style=3D"padding:4px 5px;border-right:1px solid #dedede;bor=
+der-bottom:1px solid #dedede;" align=3D"left" width=3D"280">&nbsp;Consumer =
+Price Index (YoY)</td>
+            <td style=3D"font-weight:bold;font-size:11px;padding:4px 5px;bo=
+rder-right:1px solid #dedede;border-bottom:1px solid #dedede;" align=3D"cen=
+ter" style=3D"font-weight:bold"> <span style=3D"color:red">High</span>
+                            </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.7%               =
+                                      </td>
+            <td style=3D"padding:4px 5px;border-bottom:1px solid #dedede;bo=
+rder-right:1px solid #dedede;" align=3D"center">
+                                                        1.3%               =
+                                      </td>
+
+        </tr>
+                                        <tr>
+            <td width=3D"160" style=3D"pa
