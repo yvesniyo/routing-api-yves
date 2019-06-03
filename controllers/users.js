@@ -242,10 +242,10 @@ route.get("/comfirm",(req,res,next)=>{
 })
 
 route.post("/register",(req, res, next)=>{
-		const name=req.body.name
-		const email=req.body.email
-		const password=req.body.password
-		const number=req.body.number
+		var name=req.body.name
+		var email=req.body.email
+		var password=req.body.password
+		var number=req.body.number
 		console.log(req.body)
 		if(name.trim()=="" || email.trim()=="" || password.trim()=="" || number.trim()==""){
 			res.redirect("/register.html")

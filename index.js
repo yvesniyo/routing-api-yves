@@ -11,7 +11,8 @@ var path=require("path")
 var session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
 var store = new MongoDBStore({
-  uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
+  uri:'mongodb+srv://yvesapi:myECVrPTq3naSRAI@cluster0-gj93l.azure.mongodb.net/connect_mongodb_session_test?retryWrites=true&w=majority',
+  // uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
   collection: 'mySessions'
 });
 var routingsUser=require("./routes/user")
