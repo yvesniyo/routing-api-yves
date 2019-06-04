@@ -52,10 +52,10 @@
 			max-width: 230px;
 			word-wrap: break-word;
 		}
-				.nav{
+		.nav{
 			border-bottom-left-radius: 0px;
 		}
-		.phone{
+		.phoneNav{
 			background: darkviolet;
 			color: white;
 			width: 100%;
@@ -64,7 +64,7 @@
 			left: 0;
 			padding: 20px;
 		}
-		.phone li {
+		.phoneNav li {
 
 		    color: white;
 		    display: block;
@@ -72,19 +72,19 @@
 		    margin-bottom: 10px;
 
 		}
-		.phone li a {
+		.phoneNav li a {
 		    color: white;
 		    margin-bottom: 10px;
 		}
-		.phone li.active a{
+		.phoneNav li.active a{
 			border-bottom: 2px solid white;
 		}
-		.phone li {
+		.phoneNav li {
 			font-family: sans-serif;
 			margin-left: 24px;
 			
 		}
-		.phone li a:hover{
+		.phoneNav li a:hover{
 			border-bottom: 2px solid orange !important;
 
 		}
@@ -106,7 +106,7 @@
 			.nav{
 				border-bottom-left-radius: 100px;
 			}
-			.phone{
+			.phoneNav{
 				display: none;
 			}
 			.errorPage h1{
@@ -132,7 +132,7 @@
 			.nav{
 				border-bottom-left-radius: 100px;
 			}
-			.phone{
+			.phoneNav{
 				display: none;
 			}
 			.errorPage h1{
@@ -174,7 +174,7 @@
 			</ul>
 			<span class="menuIcon" ><i class="fa fa-bars" style="color:white;font-size:35px;"></i></span>
 
-			<ul class="phone hideMenu">
+			<ul class="phoneNav hideMenu">
 				<li class="home"><a href="/">Home</a></li>
 				<li class="products"><a href="/products">Products</a></li>
 				<li class="pricing"><a href="/pricing">Pricing</a></li>
@@ -213,7 +213,7 @@
 	}
 
 	document.querySelector(".menuIcon").addEventListener("click",()=>{
-		var menu=document.querySelector(".phone");
+		var menu=document.querySelector(".phoneNav");
 		if(menu.classList.contains("hideMenu")){
 			menu.classList.remove("hideMenu")
 		}else{
