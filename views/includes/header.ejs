@@ -52,6 +52,45 @@
 			max-width: 230px;
 			word-wrap: break-word;
 		}
+				.nav{
+			border-bottom-left-radius: 0px;
+		}
+		.phone{
+			background: darkviolet;
+			color: white;
+			width: 100%;
+			position: fixed;
+			top: 50px;
+			left: 0;
+			padding: 20px;
+		}
+		.phone li {
+
+		    color: white;
+		    display: block;
+		    list-style: none;
+		    margin-bottom: 10px;
+
+		}
+		.phone li a {
+		    color: white;
+		    margin-bottom: 10px;
+		}
+		.phone li.active a{
+			border-bottom: 2px solid white;
+		}
+		.phone li {
+			font-family: sans-serif;
+			margin-left: 24px;
+			
+		}
+		.phone li a:hover{
+			border-bottom: 2px solid orange !important;
+
+		}
+		.errorPage h1{
+			font-size: 150px !important;
+		}
 		/*non mobile styles breakthrough for tablet*/
 		@media only screen and (min-width: 46.875em){
 			.nav .nav_ul{
@@ -64,8 +103,19 @@
 				top: 200px;
 				max-width: auto;
 			}
+			.nav{
+				border-bottom-left-radius: 100px;
+			}
+			.phone{
+				display: none;
+			}
+			.errorPage h1{
+				font-size: 220px !important;
+			}
+
 
 		}
+
 
 		/*medium sized screeb breakpoint desktop (tables 1050px)*/
 		@media only screen and (min-width: 65.625em){
@@ -79,14 +129,29 @@
 				top: 200px;
 				max-width: auto;
 			}
+			.nav{
+				border-bottom-left-radius: 100px;
+			}
+			.phone{
+				display: none;
+			}
+			.errorPage h1{
+				font-size: 220px !important;
+			}
+
 		}
+		.hideMenu{
+			display: none !important;
+		}
+
+		
 		
 	</style>
 </head>
 <body>
 	<div class="header">
 		<img src="assets/images/logo.png" class="logo">
-		<div class="nav phone">
+		<div class="nav">
 			<ul class="nav_ul">
 				<li class="home"><a href="/">Home</a></li>
 				<li class="products"><a href="/products">Products</a></li>
@@ -108,6 +173,27 @@
 				<% } %>
 			</ul>
 			<span class="menuIcon" ><i class="fa fa-bars" style="color:white;font-size:35px;"></i></span>
+
+			<ul class="phone hideMenu">
+				<li class="home"><a href="/">Home</a></li>
+				<li class="products"><a href="/products">Products</a></li>
+				<li class="pricing"><a href="/pricing">Pricing</a></li>
+				<li class="documentation"><a href="/documentation">Documentation</a>
+					<div class="downList">
+						<p>Hello wordl</p>
+						<p>Hello wordl</p>
+						<p>Hello wordl</p>
+						<p>Hello wordl</p>
+						<p>Hello wordl</p>
+					</div>
+				</li>
+				<li class="about"><a href="/about">About</a></li>
+				<% if (login) { %>
+					<li class="account"><a href="/dashboard">MyAccount</a></li>
+				<% } else { %>
+					<li class="login"><a href="/login">Login</a></li>
+				<% } %>
+			</ul>
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -127,7 +213,13 @@
 	}
 
 	document.querySelector(".menuIcon").addEventListener("click",()=>{
-
+		var menu=document.querySelector(".phone");
+		if(menu.classList.contains("hideMenu")){
+			menu.classList.remove("hideMenu")
+		}else{
+			menu.classList.add("hideMenu")
+		}
+		
 	})
 	
 

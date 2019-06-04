@@ -130,7 +130,8 @@
 			return false;
 		}
 		var number=phone.value.trim().substring(0,4)+phone.value.trim().substring(11,20)
-
+		$(".result").show();
+		$(".result").html("Processing...");
 		$.ajax({
 			url : '/userAuth/register',
 			data : {email:email.value.trim(),password:password.value.trim(),name:name.value.trim(),number:number},

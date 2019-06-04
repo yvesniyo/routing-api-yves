@@ -3,7 +3,7 @@ var router=express.Router()
 var path=require("path")
 
 router.get("/",(req,res,next)=>{
-	console.log(req.session.user)
+	// console.log(req.session.user)
   res.render("dashboard",{
   	title:"Dashboard | YRouting",
   	data:req.session.user
@@ -11,7 +11,7 @@ router.get("/",(req,res,next)=>{
 })
 
 router.get("/profile",(req,res,next)=>{
-	console.log(req.session.user)
+	// console.log(req.session.user)
   res.render("profile",{
   	title:"Profile | YRouting",
   	data:req.session.user
