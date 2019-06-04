@@ -12,7 +12,7 @@
 		html,body{
 			margin: 0;
 			padding: 0;
-			overflow-x: hidden;
+			
 		}
 		.grid-container{
 			display: grid;
@@ -149,6 +149,8 @@
 		}
 		.main-header_update .alerts{
 			padding: 10px;
+			word-break: break-all;
+			
 
 		}
 		.main-header_update .alerts .alert{
