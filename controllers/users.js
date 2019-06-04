@@ -306,8 +306,9 @@ route.post("/register",(req, res, next)=>{
 									amount : 0
 								}
 								req.session.user=user;
-
-								var msg=`Here it is yout confirmation link "http://localhost:1000/userAuth/comfirm?token=${confirmToken}" \n`+
+								//var linkServer="http://localhost:1000/";
+								var linkServer="https://api-testing-yves.herokuapp.com/";
+								var msg=`Here it is yout confirmation link "${linkServer}userAuth/comfirm?token=${confirmToken}" \n`+
 							        `  Use this token in your code do not show it to any of your colegeus \n if you didn't ask for this please delete it.`;
 								if(sendMail.send(email,"RoutingYvesApi Confirmation Email",msg)){
 									res.json({
