@@ -11,10 +11,10 @@
 			font-size: 13px;
 		}
 		body,html{
-			height: 100%;
+			
 			margin: 0;
 			padding: 0;
-			background-color: #eaedf1;
+			background-color: white;
 		}
 		.header{
 			position: fixed;
@@ -29,9 +29,9 @@
 			height: 100vh;
 			width: 100%;
 			background: darkviolet;
-			background-image:url('assets/images/1-n5hJwlMee4H99f4JW-42CA.png');
+			background-image:url('assets/images/web.png');
 			position: relative;
-			background-size: 100% 100vh;
+			background-size: auto 100%;
 			background-position: 0px 50px;
 			background-repeat: no-repeat;
 			
@@ -47,15 +47,7 @@
 			left: 0;
 
 		}
-		.textContainer{
-			height: 400px;
-			width: 750px;
-			border:0px solid white;
-			position: absolute;
-			top: 200px;
-			left: 30px;
-			z-index: 100;
-		}
+		
 		.heroHead{
 			color: white;
 			font-size: 40px;
@@ -70,7 +62,7 @@
 			text-transform: capitalize;
 		}
 		.form {
-			padding: 10px;
+			
 			width: 100%;
 			position: absolute;
 			bottom: 0;
@@ -82,12 +74,14 @@
 			border:none;
 			outline: none;
 			margin-right: 10px;
+			margin-bottom: 10px;
 			padding-left: 5px;
 			font-size: 12px;
-			width: 220px;
+
 			border-radius: 1px;
 		}
 		.form input{
+			width: 220px;
 			color:#1fa2dc !important;
 			padding-left: 10px;
 			border:1px solid red;
@@ -112,6 +106,7 @@
 			border:1px solid red;
 			border: 1px solid #9400d3 !important;
 			background: #041d1d !important;
+			padding: 5px;
 		}
 		.start{
 			position: absolute;
@@ -142,21 +137,23 @@
 			height: 50px;
 			width: 50px;
 			border-radius: 50%;
-			background-color: #4aba70;
+			/*background-color: #4aba70;*/
 			z-index: 200;
-			background-image:url("assets/images/IMG_20190221_112417.jpg");
+			/*background-image:url("assets/images/IMG_20190221_112417.jpg");*/
 			background-size: 100% 100%; 
-			border:1px solid white;
+			border:1px solid lightgray;
 		}
 		.msg .content{
 			height: 40px;
 			width: 160px;
 			background-color: white;
-			top: -60px;
+			top: -45px;
 			right: 10px;
 			position: absolute;
 			z-index: 200;
 			border-radius: 5px;
+			border: 1px solid lightgray;
+			display: none;
 
 		}
 		.nav_ul{
@@ -206,32 +203,35 @@
 			background: #041d1d !important;
 		}
 
+
 	</style>
 	<div class="wrapper">
 		<div class="textContainer">
-			<h1 class="heroHead" style="line-height: 10px">Route <br/> <span style="margin-left: 140px;"></span>& <br/> <span style="margin-left: 190px;"></span>Faster</h1><br />
+			<h1 class="heroHead" style="line-height: 15px;">Route-Api  </h1><br />
 			<p>Need help finding great routing api?</p>
-			<p>One and only <span style="text-transform: uppercase;letter-spacing: 1px;">Rwanda</span> map routing service.</p>
+			<p>One and only <span style="text-transform: uppercase;letter-spacing: 1px;color:orange">Rwanda</span> map routing service.</p>
 			<p>You came to the right place</p>
 			<br />
 			<div style="height: 2px;width: 200px;background-color:#1fa2dc "></div>
 			<div class="form">
 				<div class="start">
-					<div style="position: absolute;top: 0;left: 0;width: 100%;background-color: #9400d3;z-index: 10;height: 100%;padding-top: 0px;">
+					<div style="position: absolute;top: 0;left: 0;width: 230px;background-color: #9400d3;z-index: 10;height: 100%;padding-top: 0px;">
 					<p style="padding-top: 10px;">Join us now.</p>
 				</div>
 				</div>
 				<input type="text" name="name" placeholder="Your Name" autocomplete="off" class="name">
 				<input type="text" name="email" placeholder="Your Email" autocomplete="off" class="email">
-				<button class="startTrial">Start your free trial</button>
+				<button class="startTrial">Start Now</button>
 			</div>
 		</div>
 	</div>
-	<div class="msg">
+	<div class="msg" style="text-align: center;cursor: pointer;">
 		<div class="content">
 			<h1 style="letter-spacing: 0.3px;padding-top: 10px;font-family: sans-serif;text-align: center;">Hello, can I help?</h1>
 		</div>
+		<i class="fa fa-question" style="color: orange;font-size: 40px;text-align: center;margin-top: 5px;"></i>
 	</div>
+	<div style="height: 100vh;width: 100%;background-color: white;"></div>
 
 <script type="text/javascript">
 	var startTrial=document.querySelector(".startTrial");
