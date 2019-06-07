@@ -141,7 +141,10 @@
 			z-index: 200;
 			/*background-image:url("assets/images/IMG_20190221_112417.jpg");*/
 			background-size: 100% 100%; 
-			border:1px solid lightgray;
+			/*border:1px solid lightgray;*/
+		}
+		.msg:hover{
+			opacity: 0.6;
 		}
 		.msg .content{
 			height: 40px;
@@ -201,8 +204,160 @@
 			border-bottom: 1px solid red !important;
 			background: #041d1d !important;
 		}
+		.exp{
+			max-width: 350px;
+			min-width: 250px;
+			height: auto;
+			border: 0px solid aliceblue;
+			display: inline-block;
+			margin: auto;
+			text-align: ;
+			word-break: break-all;
+			margin-bottom: 10px;
+			padding-top: 10px;
 
+		}
+		.exp label i{
+			margin-left: 20px;
+			font-size: 26px !important;
+			color:  #9400d3 !important;
+		}
+		.exp h1{
+			margin-left: 20px;
+			font-weight: bold;
+			font-size: 18px;
+			margin-top: 30px;
+			font-family: sans-serif;
 
+		}
+		.exp p{
+			color:#a8a8a8;
+			text-align: left;
+			padding: 20px;
+			font-family: sans-serif;
+		}
+		/*.price{
+			max-width: 300px;
+			min-width: 250px;
+			border: 0px solid aliceblue;
+			/*display: inline-block;*/
+			margin: auto;
+			text-align: ;
+			word-break: break-all;
+			margin-bottom: 10px;
+			background-color: white;
+			margin-right: 40px;
+			height: 500px;
+			border-radius: 5px;
+			
+			/*margin: 0 auto !important;*/
+		}*/
+
+		h1 {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+  line-height: 32px;
+  padding-top: 70px;
+}
+h1 a {
+  color: #6cc;
+}
+.price-table-wrapper {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  margin-top: 30px;
+}
+.price-table-wrapper .featured-table {
+  box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.36);
+}
+.price-table-wrapper .pricing-table {
+  display: inline-block;
+  border: 1px solid #c8c8c8;
+  border-radius: 10px;
+  background: white;
+  margin: 20px;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+.price-table-wrapper .pricing-table__header {
+  padding: 20px;
+  font-size: 20px;
+  color: white;
+  background: cornflowerblue;
+}
+.price-table-wrapper .pricing-table__price {
+  color: #6cc;
+  padding: 20px;
+  margin: auto;
+  font-size: 40px;
+  font-weight: 500;
+}
+.price-table-wrapper .pricing-table__button {
+  display: block;
+  background: #6cc;
+  text-decoration: none;
+  padding: 20px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.price-table-wrapper .pricing-table__button:before {
+  position: absolute;
+  left: -20%;
+  top: -10%;
+  content: '';
+  width: 60%;
+  height: 220%;
+  transform: rotate(-30deg);
+  background: white;
+  opacity: 0.3;
+  transition: all 0.3s ease-in-out;
+}
+.price-table-wrapper .pricing-table__button:after {
+  position: absolute;
+  content: '>';
+  top: 0;
+  right: 0;
+  font-size: 25px;
+  padding: 15px;
+  padding-right: 40px;
+  color: white;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.price-table-wrapper .pricing-table__button:hover {
+  background: black;
+}
+.price-table-wrapper .pricing-table__list {
+  padding: 20px;
+  color: #a0a0a0;
+}
+.price-table-wrapper .pricing-table__list li {
+  padding: 15px;
+  border-bottom: 1px solid #c8c8c8;
+}
+.price-table-wrapper .pricing-table__list li:last-child {
+  border: none;
+}
+.price-table-wrapper .pricing-table:hover {
+  box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.36);
+}
+.price-table-wrapper .pricing-table:hover .pricing-table__button {
+  padding-left: 0;
+  padding-right: 35px;
+}
+.price-table-wrapper .pricing-table:hover .pricing-table__button:before {
+  top: -80%;
+  transform: rotate(0deg);
+  width: 100%;
+}
+.price-table-wrapper .pricing-table:hover .pricing-table__button:after {
+  opacity: 1;
+  padding-right: 15px;
+}
+		
 	</style>
 	<div class="wrapper">
 		<div class="textContainer">
@@ -230,7 +385,112 @@
 		</div>
 		<i class="fa fa-question" style="color: orange;font-size: 40px;text-align: center;margin-top: 5px;"></i>
 	</div>
-	<div style="height: 100vh;width: 100%;background-color: white;"></div>
+	<div style="height: auto;width: 100%;background-color: white;padding-top: 50px">
+		<div style="padding: 30px;text-align: center;">
+
+			<h2 style="text-align:center;font-size: 25px;">Why Us?</h2><br />
+			<p style="text-align:center;margin-bottom: 20px">So question would be why not us. we are the thing which will make sure that it satsifies you .</p>
+
+			<div class="exp">
+				<label>
+					<i class="fa fa-gear" style="font-size: 70px;color: green"></i>
+				</label>
+				<h1>Speed</h1>
+				<p>Speed in where you are going is one of our most priority, we have to make sure that our API is receiving big amount and the same on delivering as customer wishes plus extra speed of the connection</p>
+			</div>
+			<div class="exp">
+				<label>
+					<i class="fa fa-thumbs-up" style="font-size: 70px;color: green"></i>
+				</label>
+				<h1>Accuracy</h1>
+				<p>Our accuracy is based on the all the different method that has been executed in the time we were building this services, so there is much sure of our services that you are about to explore.</p>
+			</div>
+			<div class="exp">
+				<label>
+					<i class="fa fa-money" style="font-size: 70px;color: green"></i>
+				</label>
+				<h1>Price</h1>
+				<p>Also about our price, we made sure that every company and every developer will afford it in any manner
+				,with also giving them the capacity to choose between the services they need</p>
+			</div>
+			<!-- <p style="font-size: larger;color: #1fa2dc;margin-bottom: 50px;">Pricing</p> -->
+			<div class="exp">
+				<label>
+					<i class="fa fa-gear" style="font-size: 70px;color: green"></i>
+				</label>
+				<h1>Speed</h1>
+				<p>Speed in where you are going is one of our most priority, we have to make sure that our API is receiving big amount and the same on delivering as customer wishes plus extra speed of the connection</p>
+			</div>
+			<div class="exp">
+				<label>
+					<i class="fa fa-thumbs-up" style="font-size: 70px;color: green"></i>
+				</label>
+				<h1>Accuracy</h1>
+				<p>Our accuracy is based on the all the different method that has been executed in the time we were building this services, so there is much sure of our services that you are about to explore.</p>
+			</div>
+			<div class="exp">
+				<label>
+					<i class="fa fa-money" style="font-size: 70px;color: green"></i>
+				</label>
+				<h1>Price</h1>
+				<p>Also about our price, we made sure that every company and every developer will afford it in any manner
+				,with also giving them the capacity to choose between the services they need</p>
+			</div>
+			
+		</div>
+	</div>
+	<div id="pricing" style="height: auto;width: 100%;background-color: azure;padding-top: 50px;text-align: center;">
+			<!-- <p style="font-size: larger;color: #1fa2dc;margin-bottom: 50px;">Pricing</p> -->
+			<h2 style="text-align:center;font-size: 25px;">Pricing</h2><br />
+			<p style="text-align:center">Choose what suits for you,and also not that you can upgrade or downgrade whenever you wish.</p>
+
+			<div class="price-table-wrapper">
+			  <div class="pricing-table">
+			    <h2 class="pricing-table__header">- DEVELOPER -</h2>
+			    <h3 class="pricing-table__price">0RWF</h3>
+			    <a class="pricing-table__button" href="#pricing">
+			      Join Now!
+			    </a>
+			    <ul class="pricing-table__list">
+			      <li>30 day free trial</li>
+			      <li>50gb storage space</li>
+			      <li>20% discount</li>
+			      <li>24 hour support</li>
+			    </ul>
+			  </div>
+			  <div class="pricing-table featured-table">
+			    <h2 class="pricing-table__header">- BUSINESS -</h2>
+			    <h3 class="pricing-table__price">85,000RWF</h3>
+			    <a class="pricing-table__button" href="#pricing">
+			      Join Now!
+			    </a>
+			    <ul class="pricing-table__list">
+			      <li>40 day free trial</li>
+			      <li>100gb storage space</li>
+			      <li>25% discount</li>
+			      <li>24 hour support</li>
+			    </ul>
+			  </div>
+			  <div class="pricing-table">
+			    <h2 class="pricing-table__header">- PAY-AS-YOU-GO -</h2>
+			    <h3 class="pricing-table__price">0-WISH RWF</h3>
+			    <a class="pricing-table__button" href="#pricing">
+			      Join Now!
+			    </a>
+			    <ul class="pricing-table__list">
+			      <li>50 day free trial</li>
+			      <li>200gb storage space</li>
+			      <li>40% discount</li>
+			      <li>24 hour support</li>
+			    </ul>
+			  </div>
+			</div>
+	</div>
+	<div style="min-height: 40vh;width: 100%;background-color: #060d13;padding-top: 50px">
+		<div style="padding: 50px;">
+			<p style="color:white;font-size: 28px;line-height: 20px;font-weight: bold;font-family: sans-serif;">YRoutingAPI</p>
+		</div>
+	</div>
 
 <script type="text/javascript">
 	var startTrial=document.querySelector(".startTrial");

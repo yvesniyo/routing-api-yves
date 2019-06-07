@@ -19,7 +19,8 @@ var routingsUser=require("./routes/user")
 var routingsDashboard=require("./routes/dashboard")
 // var routingsSuper=require("./routes/super")
 
-
+// var data = fs.readFileSync('./images/video.json', 'utf8');
+//     console.log(JSON.parse('{"data":['+data.toString().substring(0,data.length-1) + ']}'));  
 
 app.set("view engine","ejs")
 app.set("secretKey", "moneything");
