@@ -378,6 +378,11 @@ h1 a {
 				<button class="startTrial">Start Now</button>
 			</div>
 		</div>
+		<canvas class="particles" height="200px" width="200px" style="background-color: transparent;display: inline;float: right; position:  absolute;
+  display:  block;
+  top: 0;
+  left: 0;
+  z-index: 9; "></canvas>
 	</div>
 	<div class="msg" style="text-align: center;cursor: pointer;">
 		<div class="content">
@@ -495,8 +500,42 @@ h1 a {
 			</div>
 			
 	</div>
+<script type="text/javascript" src="assets/js/particles.min.js"></script>
 
 <script type="text/javascript">
+	window.onload = function() {
+	  Particles.init({
+		  // normal options
+		  selector: '.particles',
+		  maxParticles: 450,
+		  color:"orange",
+		  speed:1,
+		  connectParticles:0,
+		  sizeVariations:4,
+		  // options for breakpoints
+		  responsive: [
+		    {
+		      breakpoint: 768,
+		      options: {
+		        maxParticles: 200,
+		        color: 'white',
+		        connectParticles: false
+		      }
+		    }, {
+		      breakpoint: 425,
+		      options: {
+		        maxParticles: 100,
+		        connectParticles: true
+		      }
+		    }, {
+		      breakpoint: 320,
+		      options: {
+		        maxParticles: 0 // disables particles.js
+		      }
+		    }
+		  ]
+		});
+	}; 
 	var startTrial=document.querySelector(".startTrial");
 	function selector(el){
 			return document.querySelector(el);
