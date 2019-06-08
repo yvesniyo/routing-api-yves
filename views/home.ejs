@@ -28,7 +28,7 @@
 		.wrapper{
 			height: 100vh;
 			width: 100%;
-			background: darkviolet;
+			background: white;
 			background-image:url('assets/images/web.png');
 			position: relative;
 			background-size: auto 100%;
@@ -40,7 +40,7 @@
 			content: '';
 			height: 100%;
 			width: 100%;
-			background-color: rgba(0,0,0,0.53);
+			/*background-color: rgba(0,0,0,0.53);*/
 			z-index: 20;
 			position: absolute;
 			top: 0;
@@ -358,14 +358,24 @@ h1 a {
   opacity: 1;
   padding-right: 15px;
 }
-		
+.footerList li{
+	margin-bottom: 10px;
+
+}
+	.footerList li a{
+		text-transform: uppercase;
+	}
+	.footerList li a:hover{
+		text-decoration: underline;
+
+	}	
 	</style>
 	<div class="wrapper">
 		<div class="textContainer">
 			<h1 class="heroHead" >Routing-Api  </h1><br />
 			<p>Need help finding great routing api?</p>
 			<p>One and only <span style="text-transform: uppercase;letter-spacing: 1px;color:orange">Rwanda</span> map routing service.</p>
-			<p>You came to the right place <a href="/" style="color:#00609b">YRouting.com</a></p>
+			<p>You came to the right place <a href="/" style="color:gold;font-weight: ;font-size: 19px;">YRouting.com</a></p>
 			<br />
 			<div style="height: 2px;width: 200px;background-color:#1fa2dc "></div>
 			<div class="form">
@@ -492,12 +502,30 @@ h1 a {
 			  </div>
 			</div>
 	</div>
-	<div style="height:auto;width: 100%;background-color: #060d13;padding-top: 20px;padding-bottom: 10px">
-			<p style="color:white;font-size: 15px;line-height: 20px;font-weight: bold;font-family: sans-serif;">YRoutingAPI</p>
-			<div style="padding-left: 20px;">
-				<p style="color:white;font-size: 15px;line-height: 20px;font-family: sans-serif;">&copy;2019 Made by cantrytech</p>
-				<p style="color:white;font-size: 15px;line-height: 20px;font-family: sans-serif;">Tell : (250) 72 871 379</p>
-				<p style="color:white;font-size: 15px;line-height: 20px;font-family: sans-serif;">Email : niyobuhungiro.yves@gmail.com</p>
+	<div style="height:0px !important;width: 100%;background-color: white;padding-top: 20px;padding-bottom: 10px;box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.07);">
+			<div style="float: left;padding-left: 20px;">
+				<p style="padding-left: 10px;display: inline-block;">
+					<label style="display: block;font-size: 13px;line-height: 20px;font-weight: bold;font-family: sans-serif;">YRoutingAPI</label>
+					<img src="assets/images/y-logo.png" style="height: 100px;width: 100px;">
+
+				</p>
+				
+				<ul class="footerList" style="display: inline-block;float: right;margin-left: 40px;padding-top: 0px;list-style-type: none;">
+					<li><a href="/documentation"> Login</a></li>
+					<li><a href="/about"> About us</a></li>
+					<li><a href="/about"> Contact us</a></li>
+					<li><a href="/documentation"> Documentation</a></li>
+					<li><a href="/products"> Other products</a></li>
+					
+					<li><a href="/products"> Create Account</a></li>
+				</ul>
+				<p style="font-size: 13px;font-family: sans-serif;display: block;margin-top: 50px;width: 100%">&copy;2019 Made by cantrytech</p>
+				<br />
+			</div>
+			<div style="padding: 20px;float: right;">
+				
+				<p style="font-size: 13px;line-height: 20px;font-family: sans-serif;">Tell : (250) 72 871 379</p><br>
+				<p style="font-size: 13px;line-height: 20px;font-family: sans-serif;">Email : niyobuhungiro.yves@gmail.com</p>
 			</div>
 			
 	</div>
