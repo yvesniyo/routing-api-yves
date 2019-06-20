@@ -84,6 +84,8 @@ route.get("/routes",async(req,res,next)=>{
 				data: data.message
 			});
 		}else{
+			var log=JSON.stringify({type:"User requesting transaction",query:req.query,time:new Date().getTime() });
+			fs.appendFileSync('./logs/requestLogs.txt', log+",\n");
 
 			res.json({
 				status: "Success",

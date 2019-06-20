@@ -1,0 +1,87 @@
+<%- include includes/header %>
+<style type="text/css">
+	*{
+		letter-spacing: 2px;
+	}
+	.containerGrid{
+		display: flex;
+		position: relative;
+		margin-top: 50px;
+	}
+	.asideNavigation{
+		min-width: 300px;
+		border-right: 0px dashed currentColor;
+		height: 100vh;
+		/*position: fixed;*/
+		top: 50px;
+		left: 0;
+		position: relative;
+	}
+	.leftNavigation{
+		padding: 20px;
+		overflow-y: scroll;
+		height: 100%;
+		position: fixed;
+		top: 50px;
+	}
+	.leftNavigation h1{
+		font-size: 25px;
+	}
+	.leftNavigation ul{
+
+	}
+	.leftNavigation ul li{
+		list-style: none;
+		margin-top: 10px;
+		display: block;
+		padding-left: 20px;
+	}
+	.leftNavigation ul li a{
+		text-transform: capitalize;
+		display: block;
+	}
+	.mainDdataContainer{
+
+	}
+	.bodyContainer{
+		padding: 50px;
+	}
+	.bodyContainer > div p{
+		letter-spacing: 2px;
+		word-spacing: 5px;
+		line-height: 20px;
+	}
+</style>
+<div class="containerGrid">
+	<div class="asideNavigation">
+		<div class="leftNavigation">
+			<h1>Documentation</h1>
+			<ul>
+				<li><a href="#">introduction</a></li>
+				<li><a href="#">Payments</a></li>
+				<li><a href="#">Integration</a></li>
+
+			</ul>
+		</div>
+		
+	</div>
+	<div class="mainDdataContainer">
+		<div class="bodyContainer">
+			<div class="introduction" style="padding-right: 40px;">
+				<h1>Introduction</h1>
+				<br /><br />
+				<p>
+					YRouting API is and end-point fast,reliable and secure api which does provide some many functionalities when it comes to map geolocation dealing stuff such as fastest paths,distances in coardinates,Traffic jam detection which can be used in any kind of industries where they need those kind of services.
+				</p><br />
+				<p>This tutor will walk you through important things you need to get started using our awesome API for routing map coardinates <br />
+				<br />
+				Here are some bullets points to be discused about:
+				</p>
+				<ul style="padding-left: 30px;">
+					<li>Payments</li>
+					<li>Integration</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

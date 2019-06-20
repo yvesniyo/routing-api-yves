@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ydesign Grid Admin</title>
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        
+    </style>
+</head>
+
+<body onload="arrange()">
+
+    <div class="grid-container">
+
+        <header class="header">
+            <div class="menu-icon">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="header__search">
+                <input type="text" class="input" name="" placeholder="Search....">
+            </div>
+            <div class="header__avatar">
+                <img src="assets/images/y-logo.png" />
+                <i class="fa fa-angle-down profileDrop"></i>
+                <div class="drop" onmouseleave="closeDrop()">
+                    <ul>
+                        <li><a href="/dashboard/profile">Profile <i class="fa fa-user"></i> </a></li>
+                        <li><a href="/dashboard/settings">Settings <i class="fa fa-gear"></i> </a></li>
+                        <li><a href="/logout">Logout <i class="fa fa-sign-out"></i> </a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <aside class="sidenav">
+            <div class="sidenav__close-icon">
+                <i class="fa fa-times"></i>
+            </div>
+            <div class="sidenav__sitename">
+                <div class="sidenav__sitename_name">
+                    <i class="fa fa-globe"></i>
+                    <label></label>YRouting
+                </div>
+            </div>
+            <div class="sidenav__siteuser">
+                <div class="sidenav__siteuser__image">
+                    <img src="assets/images/y-logo.png" />
+                </div>
+                <div class="sidenav__siteuser__username">
+                    <label>Niyobuhungiro  Yves</label>
+                </div>
+            </div>
+
+            <ul class="sidenav__list">
+                <p></p>
+                <li class="sidenav__list-item dashboard"><a href="/dashboard">Dashboard <i class="fa fa-dashboard"></i> </a></li>
+                <li class="sidenav__list-item requests"><a href="/dashboard/requests">Requests <i class="fa fa-ticket"></i> </a></li>
+                <li class="sidenav__list-item money"><a href="/dashboard/money">Money <i class="fa fa-money"></i> </a></li>
+                <!-- <li class="sidenav__list-item token"><a href="/dashboard/token">Token <i class="fa fa-key"></i> </a></li> -->
+            </ul>
+
+        </aside>
+        <script type="text/javascript">
+            var path=document.location.pathname;
+            path=path.replace("\"","");
+            path=path.replace("/dashboard/","");
+            path=path.replace("/dashboard","");
+            console.log(path)
+            if(path==""){
+                document.querySelector(".sidenav__list li.dashboard").classList.add("active");
+            }else  if(document.querySelector(".sidenav__list li."+path)){
+                document.querySelector(".sidenav__list li."+path).classList.add("active");
+            }
+
+        </script>
+        <main class="main">
+            
+
+
+
+            
+        

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Word testing</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#result{
+			position: relative;
+			text-transform: uppercase;
+		}
+		#result:after{
+			content: '|';
+			height: 20px;
+			width: 10px;
+			animation-name: dunda;
+			animation-delay: 0.2s;
+			animation-iteration-count: infinite;
+			animation-timing-function: ease-in-out;
+			animation-duration: 0.3s;
+		}
+		@keyframes dunda{
+			0%{opacity: 0;}
+			100%{opacity: 1;}
+		}
+	</style>
+</head>
+<body>
+	<p id="result"></p>
+	<input type="text" name="" class="text" placeholder="Add Word to display">
+	<button class="add">Add</button>
+	<div class="drawings"></div>
+	<canvas id="myCanvas" width="250" height="250"></canvas>
+	<script type="text/javascript">
+		var int;
+		var words=[];
+		var currentSlide=0;
+		var speed=100;
+		function sentence(text,index,reverse){
+			var text=text;
+			var textIndex=index ? index : 0;
+			var reverse=reverse ? reverse : false;
+			const draw=(text)=>{
+				if(reverse){
+					textIndex--;
+				}else{
+					textIndex++;
+				}
+				if(textIndex>text.length){
+					reverse=!reverse;
+				}else if(textIndex==0){
+					reverse=!reverse;
+					nextSlide();
+				}
+				var newText=text.substring(0,textIndex)
+				slct("#result").innerHTML=newText;
+			}
+			window.clearInterval(int)
+			int=window.setInterval(()=>{
+				draw(text)
+			},speed)
+		}
+		const slct=(element)=>{
+			return document.querySelector(element)
+		}
+
+		const nextSlide=()=>{
+			if(words.length==0){
+				words=[""];
+			}
+			sentence(words[currentSlide],0,false)
+			currentSlide++;
+			if(currentSlide > words.length-1){
+				currentSlide=0;
+			}
+			
+		}
+
+		nextSlide();
+
+
+		
+		slct(".add").addEventListener("click",()=>{
+			var w=slct(".text").value;
+			words.push(w)
+			slct(".text").value="";
+		})
+
+
+		const drawCanvas=()=>{
+			var canvas=document.createElement("canvas");
+			canvas.height=400
+			canvas.width=400
+			canvas.style.border="1px solid black"
+			canvas.style.margin="20px"
+
+			var context=canvas.getContext("2d");
+
+			
+
+			for(var i=0;i< canvas.width ;i+=50){
+				context.moveTo(i,0)
+				context.lineTo(i,canvas.height)
+				context.stroke();
+			}
+
+			for(var i=0;i < canvas.width;i+=50){
+				context.moveTo(0,i);
+				context.lineTo(canvas.width,i)
+				context.stroke();
+			}
+
+			slct(".drawings").appendChild(canvas)
+		}
+		drawCanvas();
+
+
+
+
+
+
+		// requestAnimationFrame Shim
+(function() {
+  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+  window.requestAnimationFrame = requestAnimationFrame;
+})();
+ 
+
+ var canvas = document.getElementById('myCanvas');
+ var context = canvas.getContext('2d');
+ var x = canvas.width / 2;
+ var y = canvas.height / 2;
+ var radius = 75;
+ var endPercent = 100;
+ var curPerc = 0;
+ var counterClockwise = true;
+ var circ = Math.PI * 2;
+ var quart = Math.PI / 2;
+
+ context.lineWidth = 10;
+ context.strokeStyle = '#ad2323';
+ context.shadowOffsetX = 0;
+ context.shadowOffsetY = 0;
+ context.shadowBlur = 10;
+ context.shadowColor = '#656565';
+
+
+ function animate(current) {
+     context.clearRect(0, 0, canvas.width, canvas.height);
+     context.beginPath();
+     context.arc(x, y, radius, -(quart), ((circ) * current) - quart, false);
+     context.stroke();
+     curPerc++;
+     if (curPerc < endPercent) {
+         requestAnimationFrame(function () {
+             animate(curPerc / 100)
+         });
+     }
+     console.log(curPerc)
+ }
+
+ animate();
+	</script>
+</body>
+</html>

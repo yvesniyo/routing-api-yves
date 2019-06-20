@@ -1,0 +1,270 @@
+<%- include includes/dashboard/header.ejs ; %>
+<style type="text/css">
+    td,tr,table,th{
+        border-right: 0px !important;
+        border-left: 0px !important;
+
+    }
+    th{
+        text-align: left;
+        padding-left: 10px;
+    }
+</style>
+            <div class="main-cards">
+
+                <div  class="card" style="border:1px solid lightgray;">
+                    <span style="color: slategrey;font-size: 14px;">Dashboard/<u>Money</u></span>
+                    <div style="height: auto;padding: 20px;">
+                        <div  class="tableControllers">
+                            <div style="" class="styled-select blue semi-square">
+                                <!-- <label style="font-size: 14px;color: cornflowerblue">Show Level</label> -->
+                                <select class="showLevel">
+                                    <option disabled>Show level</option>
+                                    <option>5</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>25</option>
+                                    <option>50</option>
+                                    <option>100</option>
+                                    <option>500</option>
+                                </select>
+                            </div>
+                            <div style="display: inline-block;"> 
+                               <!-- <label style="font-size: 14px;color: cornflowerblue">Search</label>  -->
+                               <input type="text" name="SearchDataInTable"  placeholder="Search..." id="searchInput">
+                            </div>
+                        </div>
+                        
+                       <table border="border" style="width: 100%;border-collapse: collapse;">
+                           <thead>
+                               <tr>
+                                   <th>ID</th>
+                                   <th>Number</th>
+                                   <th>Amount</th>
+                                   <th>Transaction Id</th>
+                                   <th>Payment Date</th>
+
+                               </tr>
+                           </thead>
+                           <tbody id="tableBody">
+                               
+                           </tbody>
+                           <tfoot>
+                               <tr>
+                                   <th>ID</th>
+                                   <th>Number</th>
+                                   <th>Amount</th>
+                                   <th>Transaction Id</th>
+                                   <th>Payment Date</th>
+
+                               </tr>
+                           </tfoot>
+                       </table>
+                       <p>
+                           <div class="paginationHolder">
+                           </div>
+                       </p>
+                        
+                    </div>
+
+                </div>
+            </div>
+<%- include includes/dashboard/footer.ejs ; %>
+
+
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript">
+        
+        var logs=[];
+        var filterdLogs=[];
+        var pages=[];
+        var activePage=1;
+        $(function(){
+            $(".showLevel").val(10);
+            var number=<%= data.number ; %>
+            $.ajax({
+                url:'/dashboard/moneyPayments',
+                data:{number:number},
+                type:"JSON",
+                method:"GET",
+                success:(data)=>{
+                    if(data.length == 0 ){
+                        console.log("Data are empty")
+                        return;
+                    }
+                    logs=data;
+                    showLevel(10)
+                    drawPaginationButtons(logs)
+                    activePage=1;
+                    
+                },
+                error:(error)=>{
+                    console.log("error retriving data");
+                }
+            })
+        })
+        $(".showLevel").on("change",(el)=>{
+            var selectedNumber=parseInt(el.target.value)
+            showLevel(selectedNumber)
+            drawPaginationButtons(logs)
+            activePage=1;
+            
+        })
+        $("#searchInput").on("input",()=>{
+            var sI=$("#searchInput").val();
+
+            var newData=logs.filter(data=>{
+                var date=new Date(data.time);
+                return data.query.amount == sI  || data.query.number == sI
+               // return data.query.amount.search(sI) || data.query.transactionId.search(sI) || data.query.number.search(sI);
+            })
+            // console.log(newData)
+            if(newData == null || newData.length == 0){
+                drawPaginationButtons(logs)
+                showTableData(logs)
+            }else{
+                showTableData(newData)
+                drawPaginationButtons(newData)
+            }
+        })
+
+        
+        
+        const drawPaginationButtons=(logs)=>{
+
+            var lenOfDatas=logs.length
+            var levelOfDataSelection=parseInt( $(".showLevel").val() )
+            var levels= parseInt(lenOfDatas / levelOfDataSelection)
+            var remaining= lenOfDatas % levelOfDataSelection
+            if(remaining % levelOfDataSelection){
+                levels+=1;
+            }
+            $(".paginationHolder").html("")
+            var pDiv=document.querySelector(".paginationHolder");
+
+            var button=document.createElement("button")
+            button.classList.add("btn-page");
+            button.classList.add("btn-prev");
+            button.innerHTML="Prev";
+            pDiv.appendChild(button);
+
+            pages=[];
+            for(var i=0;i < levels ; i++){
+                var button=document.createElement("button")
+                button.classList.add("btn-page");
+                button.classList.add("btn-number");
+                if(i==0){
+                    button.classList.add("btn-page-active")
+                }
+                button.innerHTML=i+1;
+                pDiv.appendChild(button);
+                var newArray=[];
+                for(var j= (i* levelOfDataSelection) ; j < ( (i* levelOfDataSelection)+ levelOfDataSelection) ; j++){
+                    newArray.push(logs[j] ? logs[j] : null);
+                }
+                var freshArray=newArray.filter(data=>{
+                    return data !== null
+                })
+                pages.push(freshArray);
+
+            }
+            // console.log(logs)
+            // console.log(pages)
+            var button=document.createElement("button")
+            button.classList.add("btn-page");
+            button.classList.add("btn-next");
+            button.innerHTML="Next";
+            pDiv.appendChild(button);
+
+            $(".btn-number").on("click",(el)=>{
+                $(".btn-page-active").removeClass("btn-page-active")
+                el.target.classList.add("btn-page-active")
+                showPageNumber(parseInt(el.target.textContent));
+            })
+            $(".btn-next").on("click",next);
+
+            $(".btn-prev").on("click",prev);
+
+
+        }
+        const showPageNumber=(number)=>{
+            activePage=number;
+            var number=number-1;
+            var levelOfDataSelection=parseInt( $(".showLevel").val() )
+            var start=number * levelOfDataSelection;
+            showTableData(pages[number],start)
+            
+        }
+        const next=()=>{
+            if((activePage+1) <= pages.length){
+                activePage=activePage+1;
+                showPageNumber(activePage)
+                $(".btn-page-active").removeClass("btn-page-active")
+                // el.target.classList.add("btn-page-active")
+                var buttons=document.querySelectorAll(".btn-number")
+                buttons[activePage-1].classList.add("btn-page-active")
+            }
+        }
+        const prev=()=>{
+            if(activePage > 1){
+                activePage=activePage-1;
+                showPageNumber(activePage)
+                $(".btn-page-active").removeClass("btn-page-active")
+                // el.target.classList.add("btn-page-active")
+                var buttons=document.querySelectorAll(".btn-number")
+                buttons[activePage-1].classList.add("btn-page-active")
+            }
+        }
+        const showLevel=(selectedNumber)=>{
+
+            var newLogs=[];
+            if(selectedNumber >= logs.length){
+                selectedNumber=logs.length;
+            }
+            for(var i=0;i < selectedNumber;i++){
+                newLogs.push(logs[i]);
+            }
+            showTableData(newLogs)
+        }
+
+        const showTableData=(data,start)=>{
+            var table=$("#tableBody");
+            table.html("");
+            var htmlData="";
+            var start= start ? start : 0;
+            for(var i=0;i<data.length;i++){
+                start++;
+                data[i].query.number=data[i].query.number.replace(" ","")
+                if(data[i].query.number.length == 12){
+                    var number=data[i].query.number;
+                    var Newnumber = number.substring(0,3)+" ";
+                    Newnumber += number.substring(3,6)+" ";
+                    Newnumber += number.substring(6,9)+" ";
+                    Newnumber += number.substring(9,12);
+                    data[i].query.number=Newnumber
+                }
+                var date=new Date(data[i].time);
+                var dateString=date.getFullYear()+"-";
+                    dateString+=date.getMonth()+"-";
+                    dateString+=date.getDate()+" ";
+                    dateString+=date.getHours()+":";
+                    dateString+=date.getMinutes()+":";
+                    dateString+=date.getSeconds();
+                var newData=`
+                    <tr>
+                       <td class="number"><span class="logData"> ${ start ? start : i+1} </span></td>
+                       <td class="number"><span class="logData"> +${data[i].query.number} <span></td>
+                       <td class="amount"><span class="logData"> ${data[i].query.amount} 
+                        ${data[i].query.moneyType ? data[i].query.moneyType : ''}
+                       </span></td>
+                       
+                       <td class="amount"><span class="logData"> ${data[i].query.transactionId} </span></td>
+                       <td class="amount"><span class="logData"> ${ dateString } </span></td>
+                    </tr>
+                `;
+                htmlData+=newData;
+            }
+            table.html(htmlData);
+        }
+    </script>

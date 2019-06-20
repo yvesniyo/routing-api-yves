@@ -36,6 +36,16 @@ router.get("/register",(req,res,next)=>{
     }) 
   }
 })
+router.get("/documentation",(req,res,next)=>{
+
+    res.render("documentation",{
+        title:'YRouting Documentation',
+        data:null,
+        login:req.login,
+    }) 
+  
+})
+
 router.get("/refresh",validateUser,(req,res,next)=>{
     if(!req.login){
       res.json({

@@ -1,197 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Ydesign Grid Admin</title>
-    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-        .input {
-            border: none;
-            outline: none;
-            background-color: transparent;
-            border-bottom: 1px solid #1bbae1;
-            transition: all 1s;
-        }
-
-        .input:focus {
-            border-bottom: 1px solid #394263;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .sidenav__list-item a {
-            color: white;
-            display: block;
-        }
-
-        .header__avatar {
-            position: relative;
-        }
-
-        .drop {
-            min-height: 60px;
-            width: 170px;
-            border: 1px solid transparent;
-            position: absolute;
-            top: 42px;
-            right: -10px;
-            background-color: white;
-            z-index: 10;
-            -webkit-box-shadow: 0px 15px 18px 6px rgba(0, 0, 0, 0.1);
-            -moz-box-shadow: 0px 15px 18px 6px rgba(0, 0, 0, 0.1);
-            box-shadow: 0px 15px 18px 6px rgba(0, 0, 0, 0.8);
-            display: none;
-        }
-
-        .drop:after {
-            content: '';
-            position: absolute;
-            height: 20px;
-            width: 20px;
-            background-color: inherit;
-            top: -11px;
-            right: 5px;
-            transform: rotate(45deg);
-            border-top: 1px solid transparent;
-            border-left: 1px solid transparent;
-            z-index: 10;
-        }
-
-        .drop .hider {
-            height: 100%;
-            width: 100%;
-            background-color: white;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 20;
-        }
-
-        .drop ul {
-            list-style-type: none;
-            padding-left: 10px;
-        }
-
-        .drop ul li {
-            font-size: 12px;
-            display: block;
-            margin-bottom: 10px;
-            cursor: pointer;
-            color: #394263;
-        }
-
-        .drop ul li:hover {
-            opacity: 0.6;
-        }
-
-        .drop ul li i {
-            color: #394263;
-            float: right;
-            margin-right: 10px;
-        }
-
-        .drop ul li a {
-            display: block;
-        }
-
-        .alert {
-            margin-top: 10px;
-        }
-
-        .remove {
-            display: none;
-        }
-
-        #wrapper {
-            background: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0 22px 35px -16px rgba(0, 0, 0, 0.1);
-            width: auto;
-        }
-
-        #wrapper div {
-            display: inline-block;
-            color: white !important;
-        }
-        .sidenav__list-item:hover a{
-        	color: #269ffb;
-        }
-        .sidenav__list-item:hover a i{
-        	color: #269ffb;
-        }
-        .sidenav__list-item a{
-        	color: #ddd;
-        	font-size: 12px;
-        }
-        .sidenav__list-item a i{
-        	float: left;
-        	margin-right: 10px;
-        	color:#e67e22;
-        	font-size: 16px;
-
-        }
-    </style>
-</head>
-
-<body onload="arrange()">
-
-    <div class="grid-container">
-
-        <header class="header">
-            <div class="menu-icon">
-                <i class="fa fa-bars"></i>
-            </div>
-            <div class="header__search">
-                <input type="text" class="input" name="" placeholder="Search....">
-            </div>
-            <div class="header__avatar">
-                <img src="assets/images/y-logo.png" />
-                <i class="fa fa-angle-down profileDrop"></i>
-                <div class="drop" onmouseleave="closeDrop()">
-                    <ul>
-                        <li><a href="dashboard/profile">Profile <i class="fa fa-user"></i> </a></li>
-                        <li><a href="/logout">Logout <i class="fa fa-sign-out"></i> </a></li>
-                        <li><a href="/dashboard/settings">Settings <i class="fa fa-gear"></i> </a></li>
-
-                    </ul>
-                </div>
-            </div>
-        </header>
-        <aside class="sidenav">
-            <div class="sidenav__close-icon">
-                <i class="fa fa-times"></i>
-            </div>
-            <div class="sidenav__sitename">
-                <div class="sidenav__sitename_name">
-                    <i class="fa fa-heart"></i>
-                    <label>Y</label>Design
-                </div>
-            </div>
-            <div class="sidenav__siteuser">
-                <div class="sidenav__siteuser__image">
-                    <img src="assets/images/y-logo.png" />
-                </div>
-                <div class="sidenav__siteuser__username">
-                    <label>Niyobuhungiro  Yves</label>
-                </div>
-            </div>
-
-            <ul class="sidenav__list">
-                <p></p>
-                <li class="sidenav__list-item"><a href="dashboard">Dashboard <i class="fa fa-dashboard"></i> </a></li>
-                <li class="sidenav__list-item"><a href="dashboard/requests">Requests <i class="fa fa-ticket"></i> </a></li>
-                <li class="sidenav__list-item"><a href="dashboard/money">Money <i class="fa fa-money"></i> </a></li>
-                <li class="sidenav__list-item"><a href="dashboard/token">Token <i class="fa fa-key"></i> </a></li>
-            </ul>
-
-        </aside>
-        <main class="main">
-            <div class="main-header_heading">
+<%- include includes/dashboard/header.ejs ; %>
+            <!-- <div class="main-header_heading">
                 <div class="main-header_heading_blur">
                     <div class="main_header_heading_blur_task">
                         <h3>Welcome,
@@ -199,7 +7,7 @@
                         </h3>
                         <p>How are you in this days?</p>
                     </div>
-                   <!--  <div class="main_header_heading_blur_task">
+                    <div class="main_header_heading_blur_task">
                         <label>100%</label>
                         <div>
                             <i class="fa fa-save"></i> Fred
@@ -216,9 +24,9 @@
                         <div>
                             <i class="fa fa-save"></i> Yves
                         </div>
-                    </div> -->
+                    </div>
                 </div>
-            </div>
+            </div> -->
             <div class="main-header_update">
                 <STRONG style="color: #e67e22"><i class="fa fa-warning"></i> System Alerts</STRONG>
 
@@ -306,73 +114,9 @@
                 </div>
             </div>
 
-        </main>
-        <footer class="footer">
-            <div class="footer__copyright">&copy; 2019</div>
-            <div class="footer__signature">Made by niyobuhungiro.yves@gmail.com</div>
-        </footer>
-        <div class="login" style="position: fixed;bottom: 10px;right: 10px;border-radius: 0px;height: auto;width: auto;background: #fff3cd;border:1px solid lightgray;padding-left: 10px;padding-right: 10px;cursor: pointer;display: none;transition: all 1s;">
-            <p style="font-size: 14px;color: red;">Please you have to login again.</p>
-        </div>
-    </div>
 
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
-    <script type="text/javascript">
-        document.querySelector(".profileDrop").addEventListener("click", () => {
-            document.querySelector(".drop").style.display = "block";
-        })
-
-        function closeDrop() {
-            document.querySelector(".drop").style.display = "none";
-        }
-        var alerts = document.querySelectorAll(".alert")
-        for (var i = 0; i < alerts.length; i++) {
-            alerts[i].addEventListener("click", (el) => {
-                console.log(el.target.parentElement)
-                el.target.parentElement.classList.add("remove");
-                el.target.parentElement.classList.remove("some")
-                if (document.querySelectorAll(".alerts .some").length == 0) {
-                    document.querySelector(".main-header_update").style.display = "none";
-                }
-            })
-
-        }
-
-        function arrange() {
-            if (!document.querySelector(".alerts .some")) {
-                document.querySelector(".main-header_update").style.display = "none";
-            }
-        }
-
-        setInterval(() => {
-            if (localStorage.getItem("lastRefresh") == null) {
-                localStorage.setItem("lastRefresh", new Date().getTime());
-            }
-            var lastTimeLefresh = localStorage.getItem("lastRefresh");
-            var now = new Date().getTime();
-            if ((now - lastTimeLefresh) >= 1000 * 10) {
-                $.ajax({
-                    url: '/refresh',
-                    method: "GET",
-                    success: function(data) {
-                        console.log(data)
-                        localStorage.setItem("lastRefresh", new Date().getTime());
-                        if (data.status == "error") {
-                            $(".login").css("display", "block");
-                        } else {
-                            $(".login").css("display", "none");
-                        }
-                    }
-                })
-
-            }
-        }, 100)
-        $(".login").click(function() {
-            document.location.href = "/logout";
-        })
-    </script>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+<%- include includes/dashboard/footer.ejs ; %>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-apexcharts"></script>
     <script>
@@ -488,6 +232,3 @@
 
         })
     </script>
-</body>
-
-</html>

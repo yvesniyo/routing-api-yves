@@ -40,13 +40,13 @@
 			color: black;
 		}
 		.textContainer{
-			height: 400px;
+			height: auto;
 			max-width: 750px;
 			border:0px solid white;
-			position: absolute;
-			
-			top: 90px;
-			left: 15px;
+			/*position: absolute;*/
+			padding-bottom: 20px;
+			padding: 30px;
+			/*left: 15px;*/
 			z-index: 100;
 			padding-right: 20px;
 			max-width: 230px;
@@ -56,7 +56,7 @@
 			border-bottom-left-radius: 0px;
 		}
 		.phoneNav{
-			background: darkviolet;
+			background: #0081c9;
 			color: white;
 			width: 100%;
 			position: fixed;
@@ -105,6 +105,7 @@
 			}
 			.nav{
 				border-bottom-left-radius: 100px;
+				border-top-left-radius: 100px;
 			}
 			.phoneNav{
 				display: none;
@@ -140,6 +141,8 @@
 			}
 			.nav{
 				border-bottom-left-radius: 100px;
+				border-top-left-radius: 100px;
+
 			}
 			.phoneNav{
 				display: none;
@@ -172,8 +175,8 @@
 		<div class="nav">
 			<ul class="nav_ul">
 				<li class="home"><a href="/">Home</a></li>
-				<li class="products"><a href="/products">Products</a></li>
-				<li class="pricing"><a href="#pricing">Pricing</a></li>
+				<!-- <li class="products"><a href="/products">Products</a></li> -->
+				<li class="pricing"><a href="/#pricing">Pricing</a></li>
 				<li class="documentation"><a href="/documentation">Documentation</a>
 					<div class="downList">
 						<p>Hello wordl</p>
@@ -194,8 +197,8 @@
 
 			<ul class="phoneNav hideMenu">
 				<li class="home"><a href="/">Home</a></li>
-				<li class="products"><a href="/products">Products</a></li>
-				<li class="pricing"><a href="/pricing">Pricing</a></li>
+				<!-- <li class="products"><a href="/products">Products</a></li> -->
+				<li class="pricing"><a href="/#pricing">Pricing</a></li>
 				<li class="documentation"><a href="/documentation">Documentation</a>
 					<div class="downList">
 						<p>Hello wordl</p>
@@ -215,30 +218,30 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	var path=document.location.pathname;
-	path=path.replace("\"","");
-	path=path.replace("/","");
+		var path=document.location.pathname;
+		path=path.replace("\"","");
+		path=path.replace("/","");
 
-	if(path=="register"){
-		document.querySelector(".nav_ul li.login a").href="register";
-		document.querySelector(".nav_ul li.login a").innerHTML="Register"
-		document.querySelector(".nav_ul li.login").classList.add("active")
-	}
-	if(path==""){
-		document.querySelector(".nav_ul .home").classList.add("active");
-	}else if(document.querySelector(".nav_ul li."+path)){
-		document.querySelector(".nav_ul li."+path).classList.add("active");
-	}
-
-	document.querySelector(".menuIcon").addEventListener("click",()=>{
-		var menu=document.querySelector(".phoneNav");
-		if(menu.classList.contains("hideMenu")){
-			menu.classList.remove("hideMenu")
-		}else{
-			menu.classList.add("hideMenu")
+		if(path=="register"){
+			document.querySelector(".nav_ul li.login a").href="register";
+			document.querySelector(".nav_ul li.login a").innerHTML="Register"
+			document.querySelector(".nav_ul li.login").classList.add("active")
 		}
-		
-	})
+		if(path==""){
+			document.querySelector(".nav_ul .home").classList.add("active");
+		}else if(document.querySelector(".nav_ul li."+path)){
+			document.querySelector(".nav_ul li."+path).classList.add("active");
+		}
+
+		document.querySelector(".menuIcon").addEventListener("click",()=>{
+			var menu=document.querySelector(".phoneNav");
+			if(menu.classList.contains("hideMenu")){
+				menu.classList.remove("hideMenu")
+			}else{
+				menu.classList.add("hideMenu")
+			}
+			
+		})
 	
 
 	</script>
