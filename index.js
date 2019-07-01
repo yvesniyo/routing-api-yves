@@ -3,6 +3,7 @@ const request=require("request")
 const express=require("express")
 const app=express();
 const usersController=require("./controllers/users")
+const mailer=require("./controllers/mailer")
 const bodyParser = require("body-parser");
 const mongoose = require("./config/database"); //database configuration
 var jwt = require("jsonwebtoken");
@@ -41,6 +42,7 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use("/userAuth",usersController)
+app.use("/mailserver",mailer)
 
 app.use("/dashboard",validateUser,checkLogin,routingsDashboard)
 app.use("/",validateUser,routingsUser)
