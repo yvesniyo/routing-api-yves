@@ -29,11 +29,11 @@
         for (var i = 0; i < alerts.length; i++) {
             alerts[i].addEventListener("click", (el) => {
                 console.log(el.target.parentElement)
-                el.target.parentElement.classList.add("remove");
-                el.target.parentElement.classList.remove("some")
-                if (document.querySelectorAll(".alerts .some").length == 0) {
-                    document.querySelector(".main-header_update").style.display = "none";
-                }
+                // el.target.parentElement.classList.add("remove");
+                // el.target.parentElement.classList.remove("some")
+                // if (document.querySelectorAll(".alerts .some").length == 0) {
+                //     document.querySelector(".main-header_update").style.display = "none";
+                // }
             })
 
         }
@@ -69,5 +69,23 @@
         }, 100)
         $(".login").click(function() {
             document.location.href = "/logout";
+        })
+
+        $("#resendLink").on("click",function(){
+            var email = $("#emailContainer").val();
+            $.ajax({
+                url:'/userAuth/resendEmail',
+                method:'get',
+                data:{email: email},
+                success:function(data){
+                    console.log(data);
+                    $("#resendLink").text("Send Success!!!");
+                    $("#resendLink").css("color","blue");
+                },
+                error:function(error){
+                    console.log(error);
+                    $("#resendLink").html("Resending Failed check if your email is correct in Profile.and try again later");
+                }
+            })
         })
 

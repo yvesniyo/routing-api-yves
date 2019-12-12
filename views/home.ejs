@@ -9,6 +9,7 @@
 			text-decoration: none;
 			/*font-family: monospace;*/
 			font-size: 13px;
+			line-height: 2;
 		}
 		body,html{
 			
@@ -235,8 +236,8 @@
 		}
 		.exp label i{
 			margin-left: 20px;
-			font-size: 26px !important;
-			color:  #0081c9 !important;
+			font-size: 100px !important;
+			color:  white !important;
 		}
 		.exp h1{
 			margin-left: 20px;
@@ -306,7 +307,7 @@
 		@media(min-width: 600px){
 			#footer{
 				display: flex;
-				justify-content:space-around;
+				justify-content: space-evenly;
 			}
 			#footer > div{
 				margin-bottom: 0px;
@@ -347,6 +348,12 @@
 			}
 		}
 
+		.pricing-table{
+			border:none !important;
+			border-radius: 0px !important;
+
+		}
+
 
 
 	</style>
@@ -384,11 +391,11 @@
 		</div>
 		<i class="fa fa-comment" style="color: orange;font-size: 30px;text-align: center;margin-top: 5px;"></i>
 	</div> -->
-	<div style="height: auto;width: 100%;background-color: hotpink;padding-top: 50px;padding-bottom: 100px;">
+	<div style="height: auto;width: 100%;background-color: #0081c9;padding-top: 50px;padding-bottom: 100px;">
 		<div style="padding: 30px;text-align: center;">
 
 			<h2 style="text-align:center;font-size: 25px;color: white">Why Us?</h2><br />
-			<p style="text-align:center;margin-bottom: 20px">So question would be why not us. we are the thing which will make sure that it satsifies you .</p>
+			<p style="text-align:center;margin-bottom: 20px;color: white">So question would be why not us. we are the thing which will make sure that it satsifies you .</p>
 
 			<div class="exp">
 				<label>
@@ -415,48 +422,50 @@
 						
 		</div>
 	</div>
-	<div id="pricing" style="height: auto;width: 100%;background-color: lavenderblush;padding-top: 50px;text-align: center;padding-bottom: 100px;">
+	<div id="pricing" style="height: auto;width: 100%;background-color: #07ae9c;padding-top: 50px;text-align: center;padding-bottom: 100px;">
 			<!-- <p style="font-size: larger;color: #1fa2dc;margin-bottom: 50px;">Pricing</p> -->
-			<h2 style="text-align:center;font-size: 25px;">Pricing</h2><br />
-			<p style="text-align:center;padding: 20px">Choose what suits for you,and also not that you can upgrade or downgrade whenever you wish.</p>
+			<h2 style="text-align:center;font-size: 25px;color: white;">Pricing</h2><br />
+			<p style="text-align:center;padding: 20px;color: white">Choose what suits for you,and also not that you can upgrade or downgrade whenever you wish.</p>
 
 			<div class="price-table-wrapper">
 			  <div class="pricing-table">
 			    <h2 class="pricing-table__header">- DEVELOPER -</h2>
 			    <h3 class="pricing-table__price">0RWF</h3>
-			    <a class="pricing-table__button" href="#pricing">
+			    <a class="pricing-table__button" href="/register?pack=developer">
 			      Join Now!
 			    </a>
 			    <ul class="pricing-table__list">
-			      <li>1 year free trial</li>
-			      <li>1,000 transactions</li>
-			      <li>24 hour support</li>
+			      <li>1 week free trial</li>
+				  <li>1,000 transactions</li>
+				  <li>24/7h Support</li>
+			      <!-- <li>50% uptime</li> -->
 			    </ul>
 			  </div>
 			  <div class="pricing-table featured-table">
 			    <h2 class="pricing-table__header">- BUSINESS -</h2>
 			    <h3 class="pricing-table__price">85,000RWF</h3>
-			    <a class="pricing-table__button" href="#pricing">
+			    <a class="pricing-table__button" href="/register?pack=business">
 			      Join Now!
 			    </a>
 			    <ul class="pricing-table__list">
-			      <li>40 day free trial</li>
-			      <li>100,000 transactions</li>
-			      <li>21% discount</li>
-			      <li>24 hour support</li>
+				  <li>1 Month</li>
+			      <li>unlimited transactions</li>
+			      <li>99.9% Uptime</li>
+			      <li>24/7h Support</li>
 			    </ul>
 			  </div>
 			  <div class="pricing-table">
 			    <h2 class="pricing-table__header">- PAY-AS-YOU-GO -</h2>
-			    <h3 class="pricing-table__price">0-WISH</h3>
-			    <a class="pricing-table__button" href="#pricing">
+			    <h3 class="pricing-table__price">Your WISH</h3>
+			    <a class="pricing-table__button" href="/register?pack=pay_as_you_go">
 			      Join Now!
 			    </a>
 			    <ul class="pricing-table__list">
-			      <li>10 day free trial</li>
-			      <li>1,000 transactions</li>
-			      <!-- <li>0% discount</li> -->
-			      <li>24 hour support</li>
+			      
+			      <li>Wish transactions</li>
+				  <!-- <li>0% discount</li> -->
+				  <li>99.9% uptime</li>
+			      <li>24/7h Support</li>
 			    </ul>
 			  </div>
 			</div>
@@ -464,19 +473,19 @@
 	<div id="pricing" style="min-height: 0vh;width: 100%;background-color: cornflowerblue;padding-top: 0px;text-align: center;padding-bottom: 0px;margin-bottom: 10px;">
 
 	</div>
-	<div style="height:auto !important;width: 100%;background-color: white;padding-top: 20px;padding-bottom: 10px;box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.07);">
+	<div style="height:auto !important;width: 100%;background-color: white;padding-top: 10px;padding-bottom: 5px;box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.07);">
 			<div id="footer">
-				<div>
+				<!-- <div>
 					<p style="padding-left: 0px;display: inline-block;">
 						<label style="display: block;font-size: 13px;line-height: 20px;font-weight: bold;font-family: sans-serif;">YRoutingAPI</label>
 						<img src="assets/images/y-logo.png" style="height: 100px;width: 100px;">
 
 					</p>
-				</div>
+				</div> -->
 				<div>
 					<label style="display: block;font-size: 13px;line-height: 20px;font-weight: bold;font-family: sans-serif;">Smart Locate</label><br />
-					<ul class="footerList" style="margin-left: 0px;padding-top: 0px;list-style-type: none;">
-						<li><a href="/documentation"> Login</a></li>
+					<ul class="footerList" style="margin-left: 0px;padding-top: 0px;list-style-type: none;padding-left: 5px;">
+						<li><a href="/login"> Login</a></li>
 						<li><a href="/about"> About us</a></li>
 						<li><a href="/about"> Contact us</a></li>
 						<li><a href="/documentation"> Documentation</a></li>
@@ -531,7 +540,7 @@
 		// start word typing js
 
 		var int;
-		var words=["Welcome!","This is YRouting.com","We are Faster.","We are Easy.","We are cheap.","We are accurate"];
+		var words=["Welcome!","This is YRouting.com","We are Faster.","We are Easy.","We are affordable.","We are accurate"];
 		var currentSlide=0;
 		var speed=100;
 		function sentence(text,index,reverse){

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const usersPack = require("../controllers/usersPack")
 
 //Define a schema
 const Schema = mongoose.Schema;
@@ -70,6 +71,19 @@ const UserSchema = new Schema({
 		type: String,
 		trim: false,
 		required: false
+	},
+	timeExpire:{
+		type: Number,
+		required: false,
+	},
+	sentOverBundle:{
+		type: Boolean,
+		required: false,
+		default: false,
+	},
+	numberOfMonths:{
+		type: Number,
+		required: false,
 	}
 
 });
@@ -77,6 +91,9 @@ const UserSchema = new Schema({
 UserSchema.pre("save", function(next) {
 	if(this.password !== undefined){
 		this.password = bcrypt.hashSync(this.password, saltRounds);
+	}
+	if(this.timeExpire == undefined){
+		this.timeExpire = new Date().getTime() + usersPack.developer.time;
 	}
 	next();
 });

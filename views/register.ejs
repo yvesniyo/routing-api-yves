@@ -4,6 +4,10 @@
 		<div class="sign">
 			<form method="POST" action="/register" class="formContainer" autocomplete="off">
 				<div class="form-control">
+					<p>Full Name</p>
+					<input type="text" autocomplete="off" autofocus name="name" placeholder="Enter Full Name" class="name"  />
+				</div>
+				<div class="form-control">
 					<p>Email Address</p>
 					<input type="text" autocomplete="off" autofocus name="email" placeholder="Enter Email"  class="email" />
 				</div>
@@ -16,10 +20,7 @@
 					<p>Confirm Password</p>
 					<input type="password" name="repassword" placeholder="Confirm Password" class="repassword">
 				</div>
-				<div class="form-control">
-					<p>Full Name</p>
-					<input type="text" autocomplete="off" autofocus name="name" placeholder="Enter Full Name" class="name"  />
-				</div>
+				
 				<div class="form-control" style="position: relative;">
 					<p>Phone Number</p>
 					<input type="text" autocomplete="off" autofocus name="number" placeholder="Enter Phone Number" class="phone"  />
@@ -38,6 +39,7 @@
 	</div>
 <%- include includes/footer %>
 <script type="text/javascript">
+	var urlParams = new URLSearchParams(window.location.search);
 	function selector(el){
 		return document.querySelector(el);
 	}
@@ -132,9 +134,13 @@
 		var number=phone.value.trim().substring(0,4)+phone.value.trim().substring(11,20)
 		$(".result").show();
 		$(".result").html("Processing...");
+		var pack = "";
+		if(urlParams.has("pack")){
+			pack = urlParams.get("pack").trim();
+		}
 		$.ajax({
 			url : '/userAuth/register',
-			data : {email:email.value.trim(),password:password.value.trim(),name:name.value.trim(),number:number},
+			data : {email:email.value.trim(),password:password.value.trim(),name:name.value.trim(),number:number,pack:pack},
 			method:"POST",
 			success:function(data){
 				$(".result").show();

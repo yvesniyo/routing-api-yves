@@ -1,16 +1,26 @@
 var express=require("express"),
     router=express.Router(),
     path=require("path"),
-    fs=require("fs")
+    fs=require("fs"),
+    userPack = require("../controllers/usersPack")
 
 router.get("/",(req,res,next)=>{
 	// console.log(req.session.user)
   res.render("dashboard",{
   	title:"Dashboard | YRouting",
-  	data:req.session.user
+    data:req.session.user,
+    bussiness: getTitle(req)
   })
 })
+function getTitle(req){
+  var user = req.session.user;
+  var expire = user.timeExpire;
+  if(expire == userPack.business.time){
+    return true;
+  }
+  return false;
 
+}
 router.get("/profile",(req,res,next)=>{
   res.render("profile",{
   	title:"Profile | YRouting",

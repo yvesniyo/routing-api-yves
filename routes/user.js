@@ -1,6 +1,6 @@
-var express=require("express")
+var express = require("express")
 var router=express.Router()
-var path=require("path")
+var path = require("path")
 var jwt = require("jsonwebtoken");
 var userModel=require("../models/usersModel")
 
@@ -78,7 +78,9 @@ router.get("/refresh",validateUser,(req,res,next)=>{
               token : userInfo.token,
               confirmed:userInfo.confirmed,
               amount : userInfo.amount,
-              lastPayment : userInfo.lastPayment
+              lastPayment : userInfo.lastPayment,
+              timeExpire : userInfo.timeExpire,
+              numberOfMonths : userInfo.numberOfMonths,
             }
             req.session.user=user;
             res.json({

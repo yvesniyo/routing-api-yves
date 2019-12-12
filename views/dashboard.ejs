@@ -29,23 +29,26 @@
             </div> -->
             <div class="main-header_update">
                 <STRONG style="color: #e67e22"><i class="fa fa-warning"></i> System Alerts</STRONG>
-
+                <input value="<%= data.email ;%>" type="hidden" id="" />
                 <div class="alerts">
                     <% if (!data.confirmed) { %>
                         <div class="alert some">
                             <p>Please you have to confirm your email,because you won't be accessing all the actities of this system</p>
-
                         </div>
-                        <% }  %>
-                            <div class="alert some" style="background-color: #cce5ff;">
-                                <p style="color: #6f8bff">Use this token in your requests :
-                                    <label style="color: green;"><%= data.token %></label>
+                        <div class="alert some" style="background-color: #cce5ff;">
+                                <p style="color: #6f8bff">Or Resend Confirmation Link :
+                                    <label style="color: green;"><a href="#resend" id="resendLink">Resend</a></label>
                                 </p>
-                            </div>
+                        </div>
+                    <% }  %>
+                    
+                    
 
                 </div>
             </div>
             <div class="main-overview">
+                <% if (!bussiness) { %>
+                
                 <div class="overviewcard">
                     <div class="overviewcard__icon fa fa-ticket"></div>
                     <div class="overviewcard__info">
@@ -55,7 +58,7 @@
 							let amount=data.amount;
 							let req=amount/30;
 							%>
-                                <%= parseInt(req) %>
+                                <%= Math.floor(parseInt(req),2) %>
                         </p>
                     </div>
                 </div>
@@ -63,8 +66,7 @@
                     <div class="overviewcard__icon fa fa-money"></div>
                     <div class="overviewcard__info">
                         <h6>Amount Left</h6>
-                        <p>
-                            <%= data.amount; %> Rwf</p>
+                        <p><%= Math.floor(parseInt(data.amount)); %> Rwf</p>
                     </div>
                 </div>
                 <div class="overviewcard">
@@ -72,10 +74,28 @@
                     <div class="overviewcard__info">
                         <h6>Last Payment</h6>
                         <p>
-                            <%= data.amount-data.lastPayment %> Rwf
+                            <%= Math.floor(data.amount-data.lastPayment) %> Rwf
                         </p>
                     </div>
                 </div>
+                <% }else{ %>
+                   
+                    <div class="overviewcard">
+                        <div class="overviewcard__icon far fa-clock"></div>
+                        <div class="overviewcard__info">
+                            <h6>Remaining Days</h6>
+                            <p>
+                                <%
+                                function parseDate(str) {
+                                    var mdy = str.split('/');
+                                    return new Date(mdy[2], mdy[0]-1, mdy[1]);
+                                }
+                                function datediff(f, s) { return Math.round((s-f)/(1000*60*60*24)); } %> 
+                                <%= datediff( new Date().getTime(), data.numberOfMonths) %> Days
+                            </p>
+                        </div>
+                    </div>
+                <% } %>
 
 
             </div>
@@ -86,11 +106,11 @@
                         <div class="chart1" style="height: 20px;width: 20px;background-color: #269ffb">
 
                         </div>
-                        <p style="color:#269ffb;display: inline;margin-top: -10px;cursor: pointer;"> Money</p> <br />
+                        <p style="color:#269ffb;display: inline;margin-top:-10px;cursor: pointer;"> Money</p> <br />
                         <div class="chart1" style="height: 20px;width: 20px;background-color: #6d838d">
 
                         </div>
-                        <p style="color:#6d838d;display: inline;margin-top: -10px;cursor: pointer;"> Requests</p> <br />
+                        <p style="color:#6d838d;display: inline;margin-top:-10px;cursor: pointer;"> Requests</p> <br />
                         <div class="chart1" style="height: 20px;width: 20px;background-color: #00e396">
 
                         </div>
@@ -116,119 +136,5 @@
 
 
 <%- include includes/dashboard/footer.ejs ; %>
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue-apexcharts"></script>
-    <script>
-        function generateDayWiseTimeSeries(baseval, count, yrange) {
-            var i = 0;
-            var series = [];
-            while (i < count) {
-                var x = baseval;
-                var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
 
-                series.push([x, y]);
-                baseval += 86400000;
-                i++;
-            }
-            return series;
-        }
-
-        // The global window.Apex variable below can be used to set common options for all charts on the page
-        Apex = {
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                curve: 'straight'
-            },
-            toolbar: {
-                tools: {
-                    selection: false
-                }
-            },
-            markers: {
-                size: 6,
-                hover: {
-                    size: 10
-                }
-            },
-            tooltip: {
-                followCursor: false,
-                theme: 'dark',
-                x: {
-                    show: false
-                },
-                marker: {
-                    show: false
-                },
-                y: {
-                    title: {
-                        formatter: function() {
-                            return ''
-                        }
-                    }
-                }
-            },
-            grid: {
-                clipMarkers: false
-            },
-            yaxis: {
-                tickAmount: 2
-            },
-            xaxis: {
-                type: 'datetime'
-            },
-        }
-
-        new Vue({
-            el: '#wrapper',
-            components: {
-                apexchart: VueApexCharts,
-            },
-            data: {
-                series1: [{
-                    data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
-                        min: 10,
-                        max: 60
-                    })
-                }],
-                series2: [{
-                    data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
-                        min: 10,
-                        max: 30
-                    })
-                }],
-                series3: [{
-                    data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
-                        min: 10,
-                        max: 90
-                    })
-                }],
-                chartOptionsLine1: {
-                    chart: {
-                        id: 'fb',
-                        group: 'social',
-                    },
-                    colors: ['#008FFB'],
-                },
-                chartOptionsLine2: {
-                    chart: {
-                        id: 'tw',
-                        group: 'social',
-                    },
-                    colors: ['#546E7A'],
-
-                },
-                chartOptionsArea: {
-                    chart: {
-                        id: 'yt',
-                        group: 'social',
-                    },
-                    colors: ['#00E396'],
-
-                }
-            },
-
-        })
-    </script>
+    

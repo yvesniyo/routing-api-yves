@@ -10,7 +10,7 @@
 		html,body{
 			margin: 0;
 			padding: 0;
-			background-color: ;
+			/* background-color: ; */
 		}
 		.wraper{
 			display: grid;
@@ -59,7 +59,7 @@
 		.form-control p{
 			margin-bottom: 1px;
 			font-size: 12px;
-			color:lime;
+			
 		}
 		.form-control input{
 			width: 100%;
@@ -89,7 +89,7 @@
 			outline: none;
 			border:1px solid #af64cc;
 			cursor: pointer;
-			background-color: ;
+			/* background-color: ; */
 			color:darkslateblue ;
 			border-radius: 0px;
 			font-size: 11px;
@@ -217,6 +217,7 @@
 		  margin: 20px;
 		  transition: all 0.3s ease-in-out;
 		  overflow: hidden;
+		  border-bottom: 8px solid #0081c9 !important;
 		}
 		.price-table-wrapper .pricing-table__header {
 		  padding: 20px;
@@ -296,11 +297,11 @@
 		  padding-right: 15px;
 		}
 		.footerList li{
-			margin-bottom: 10px;
+			margin-bottom: 1px;
 
 		}
 		.footerList li a{
-			text-transform: uppercase;
+			text-transform: ;
 		}
 		.footerList li a:hover{
 			text-decoration: underline;

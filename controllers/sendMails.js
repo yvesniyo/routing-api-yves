@@ -27,7 +27,7 @@ module.exports={
            console.log('message sent')
            return true
         } else {
-          console.log(err)
+          console.log("SendMailError:: can't send email");
           return false
         }
       });
